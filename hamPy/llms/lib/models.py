@@ -48,4 +48,6 @@ class QueryNestedListModel(BaseModel):
     Model for Langchain Nested List.
     """
     nested_items: list[list[str]] = Field(..., description="Nested list of items, from request.")
+    nested_items: list[list[str]] = Field(..., description="Nested list of items, from request.")
+
 

@@ -14,11 +14,9 @@
 
 from ....llms.lib.models import QueryContentModel, QueryListModel, QueryNestedListModel
 
-import re
 import os
 import json
 import getpass
-import asyncio
 import instructor
 from openai import OpenAI
 
@@ -47,7 +45,7 @@ class OpenAIQuery:
         self.ai = instructor.patch(OpenAI(api_key=self.key))
 
 
-    def chat_content(self, model: str = None, system: str = None, query: str = None):
+    def ask(self, model: str = None, system: str = None, query: str = None):
         """"
         Sends a query to OpenAI Chat Completions.
         
@@ -78,19 +76,19 @@ class OpenAIQuery:
             print("Query is required for invoke()")
             return
         else:
-            self.completion = self.ai.chat.completions.create(
+            completion = self.ai.chat.completions.create(
                 model=self.model,
                 response_model=self.pymodel,
                 messages=[{"role": "system", "content": self.system}, {"role": "user", "content": self.query}]
             )
-            assert isinstance(self.completion, QueryContentModel)
-            print(self.completion.model_dump_json(indent=2))
-            self.completion = self.completion.model_dump_json(indent=2)
-            self.completion = json.loads(self.completion)
-            self.completion = self.completion["content"]
-            return self.completion
+            assert isinstance(completion, QueryContentModel)
+            print(completion.model_dump_json(indent=2))
+            completion = completion.model_dump_json(indent=2)
+            completion = json.loads(completion)
+            completion = completion["content"]
+            return completion
         
-    def chat_list(self, model: str = None, system: str = None, query: str = None):
+    def list(self, model: str = None, system: str = None, query: str = None):
         """"
         Sends a query to OpenAI Chat Completions.
         Returns a list of completions.
@@ -123,26 +121,26 @@ class OpenAIQuery:
             return
         elif self.query == tuple:
             for i in self.query:
-                self.completion = self.ai.chat.completions.create(
+                completion = self.ai.chat.completions.create(
                     model=self.model,
                     response_model=self.pymodel,
                     messages=[{"role": "system", "content": self.system}, {"role": "user", "content": i}]
                 )
-                assert isinstance(self.completion, QueryListModel)
-                return self.completion
+                assert isinstance(completion, QueryListModel)
+                return completion
         else:
-            self.completion = self.ai.chat.completions.create(
+            completion = self.ai.chat.completions.create(
                 model=self.model,
                 response_model=self.pymodel,
                 messages=[{"role": "system", "content": self.system}, {"role": "user", "content": self.query}]
             )
-            assert isinstance(self.completion, QueryListModel)
-            self.completion = self.completion.model_dump_json(indent=2)
-            self.completions = json.loads(self.completion)
-            self.completions = self.completions["items"]
-            return self.completions
+            assert isinstance(completion, QueryListModel)
+            completion = completion.model_dump_json(indent=2)
+            completions = json.loads(completion)
+            completions = completions["items"]
+            return completions
         
-    def chat_nestedlist(self, model: str = None, system: str = None, query: str = None):
+    def nestedlist(self, model: str = None, system: str = None, query: str = None):
         """
         Sends a query to OpenAI Chat Completions.
         
@@ -173,18 +171,55 @@ class OpenAIQuery:
             print("Query is required for invoke()")
             return
         else:
-            self.completions = self.ai.chat.completions.create(
+            completions = self.ai.chat.completions.create(
                 model=self.model,
                 response_model=self.pymodel,
                 messages=[{"role": "system", "content": self.system}, {"role": "user", "content": self.query}]
             )
-            assert isinstance(self.completion, QueryNestedListModel)
-            self.completions = self.completion.model_dump_json(indent=2)
-            self.completions = json.loads(self.completion)
-            self.completions = self.completions["nested_items"]
-            return self.completions
+            assert isinstance(completions, QueryNestedListModel)
+            completions = completions.model_dump_json(indent=2)
+            completions = json.loads(completions)
+            completions = completions["nested_items"]
+            return completions
+        
+    def instruct(self, model: str = None, pymodel = None, system: str = None, query: str = None):
+        """
+        Creates an OpenAI query, with a user provided Pydantic model.
 
-    def invoke(self, query: str = None):
+        Args:
+        -   model (str): Model to be used for the query.
+        -   pymodel (class) - Pydantic Model to be used for the query.
+        -   system (str): System message to be used for the query.
+        -   query (str): Query to be sent to OpenAI.
+        """
+        if model == "3":
+            self.model = "gpt-3.5-turbo"
+        if model == "4":
+            self.model = "gpt-4-preview-1106"
+        self.pymodel = pymodel
+        self.system = system
+        self.query = query
+        if self.model == None:
+            print("Model is required for invoke()")
+            return
+        elif self.pymodel == None:
+            print("Pydantic Model is required for invoke()")
+            return
+        elif self.system == None:
+            print("System message is required for invoke()")
+            return
+        elif self.query == None:
+            print("Query is required for invoke()")
+            return
+        else:
+            completion = self.ai.chat.completions.create(
+                model=self.model,
+                response_model=self.pymodel,
+                messages=[{"role": "system", "content": self.system}, {"role": "user", "content": self.query}]
+            )
+            return completion
+
+    def chat(self, query: str = None):
         """"
         Creates a simple, base query to OpenAI Chat Completions.
         
@@ -197,8 +232,8 @@ class OpenAIQuery:
             print("Query is required for invoke()")
             return
         else:
-            self.completion = self.ai.chat.completions.create(
+            completion = self.ai.chat.completions.create(
                 model="gpt-3.5-turbo-1106",
                 messages=[{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": self.query}]
             )
-            return self.completion
+            return completion
