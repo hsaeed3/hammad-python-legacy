@@ -17,10 +17,6 @@ from .llms import OpenAIQuery, GoogleQuery, HuggingfaceQuery
 
 #==============================================================================#
 
-def ai(key : str): 
-    openai = OpenAIQuery(key=key)
-    return openai
-
 #==============================================================================#
 
 class HammadPyTools:
@@ -28,12 +24,17 @@ class HammadPyTools:
     All Tools are accessible from this class.
     """
     def __init__(self):
-        self.say = MessageStyles()
+        self.text = MessageStyles()
         self.ask = StaticInputInteractions()
         self.askbox = DynamicInputInteractions()
+    
+    def ai(self, key : str): 
+        self.key = key
+        self.ai = OpenAIQuery(key)
+        return self.ai
 
-    def say(self):
-        return self.say
+    def text(self):
+        return self.text
     
     def ask(self):
         return self.ask

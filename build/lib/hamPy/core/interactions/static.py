@@ -67,7 +67,7 @@ class MessageStyles:
         else:
             message_dialog(title="Message", text=message).run()
 
-    def styled_message(self, message, color, bg=None, style=None):
+    def say(self, message, color, bg=None, style=None):
         """
         Display a styled message in the terminal.
 
@@ -109,6 +109,6 @@ class MessageStyles:
         background_color = bg_map.get(bg, "") if bg else ""
         additional_style = style_map.get(style, "") if style else ""
 
-        return f"{additional_style}{text_color}{background_color}{message}{self.text_reset}{self.bg_reset if bg else ''}"
+        print(f"{additional_style}{text_color}{background_color}{message}{self.text_reset}{self.bg_reset if bg else ''}")
 
 

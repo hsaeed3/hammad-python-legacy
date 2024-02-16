@@ -21,6 +21,7 @@ import instructor
 from openai import OpenAI
 
 #==============================================================================#
+
 class OpenAIKey:
     def __init__(self):
         print("Testing OpenAI API Key.")
