@@ -11,11 +11,16 @@
 
 from .core import MessageStyles
 from .core import DynamicInputInteractions, StaticInputInteractions
-from .core import Validator
+from .core import Validation
 
 from .llms import OpenAIQuery, GoogleQuery, HuggingfaceQuery
 
 #==============================================================================#
+
+class HPYError(Exception):
+    def __init__(self, message):
+        self.message = message
+        super().__init__(self.message)
 
 #==============================================================================#
 
@@ -32,6 +37,10 @@ class HammadPyTools:
         self.key = key
         self.ai = OpenAIQuery(key)
         return self.ai
+    
+    def error(self, message : str):
+        self.error = HPYError(message)
+        return self.error
 
     def text(self):
         return self.text
@@ -42,9 +51,13 @@ class HammadPyTools:
     def askbox(self):
         return self.askbox
     
-    def validator(self, input : str, val : str):
-        self.validator = Validator(input=input, val=val)
-        return self.validator
+    def validate_type(self, value, type):
+        self.validator = Validation()
+        return self.validator.type(value, type)
+    
+    def validate_empty(self, value):
+        self.validator = Validation()
+        return self.validator.empty(value)
     
     def google(self):
         self.google = GoogleQuery()

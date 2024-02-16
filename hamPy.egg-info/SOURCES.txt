@@ -7,11 +7,15 @@ hamPy.egg-info/SOURCES.txt
 hamPy.egg-info/dependency_links.txt
 hamPy.egg-info/top_level.txt
 hamPy/core/__init__.py
+hamPy/core/data/__init__.py
+hamPy/core/data/frame.py
 hamPy/core/interactions/__init__.py
 hamPy/core/interactions/dynamic.py
 hamPy/core/interactions/static.py
-hamPy/core/lib/__init__.py
-hamPy/core/lib/validator.py
+hamPy/core/validation/__init__.py
+hamPy/core/validation/validation.py
+hamPy/image/__init__.py
+hamPy/image/image.py
 hamPy/llms/__init__.py
 hamPy/llms/completions/__init__.py
 hamPy/llms/completions/google/__init__.py
@@ -22,3 +26,5 @@ hamPy/llms/completions/openai/__init__.py
 hamPy/llms/completions/openai/query.py
 hamPy/llms/lib/__init__.py
 hamPy/llms/lib/models.py
+hamPy/pydantic/__init__.py
+hamPy/pydantic/models.py
