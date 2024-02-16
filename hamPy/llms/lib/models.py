@@ -12,22 +12,7 @@
 
 #==============================================================================#
 
-from langchain_core.pydantic_v1 import BaseModel, Field
 from pydantic import BaseModel, Field
-
-#==============================================================================#
-
-class QueryLangchainContentModel(BaseModel):
-    """
-    Model for Completion Content.
-    """
-    content: str = Field(description="Generated content, from request.")
-
-class QueryLangchainListModel(BaseModel):
-    """
-    Model for Completion List.
-    """
-    items: list[str] = Field(description="List of items, from request.")
 
 #==============================================================================#
 

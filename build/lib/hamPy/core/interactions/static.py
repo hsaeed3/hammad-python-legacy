@@ -112,3 +112,10 @@ class MessageStyles:
         print(f"{additional_style}{text_color}{background_color}{message}{self.text_reset}{self.bg_reset if bg else ''}")
 
 
+class Message:
+    def __init__(self, message, color, bg=None, style=None):
+        self.message = message
+        self.color = color
+        self.bg = bg
+        self.style = style
+        MessageStyles().say(self.message, self.color, self.bg, self.style)

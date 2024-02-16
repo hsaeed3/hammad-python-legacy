@@ -18,10 +18,6 @@ hamPy/image/__init__.py
 hamPy/image/image.py
 hamPy/llms/__init__.py
 hamPy/llms/completions/__init__.py
-hamPy/llms/completions/google/__init__.py
-hamPy/llms/completions/google/query.py
-hamPy/llms/completions/huggingface/__init__.py
-hamPy/llms/completions/huggingface/query.py
 hamPy/llms/completions/openai/__init__.py
 hamPy/llms/completions/openai/query.py
 hamPy/llms/lib/__init__.py

@@ -9,11 +9,11 @@
 ##== HamPy ==######################################== Hammad's Python Tools ==## 
 ##== @/hampy ==#################################################################
 
-from .core import MessageStyles
+from .core import MessageStyles, Message
 from .core import DynamicInputInteractions, StaticInputInteractions
 from .core import Validation
 
-from .llms import OpenAIQuery, GoogleQuery, HuggingfaceQuery
+from .llms import OpenAIQuery
 
 #==============================================================================#
 
@@ -41,6 +41,9 @@ class HammadPyTools:
     def error(self, message : str):
         self.error = HPYError(message)
         return self.error
+    
+    def say(self, message, color, bg=None, style=None):
+        Message(message, color, bg, style)
 
     def text(self):
         return self.text
@@ -58,14 +61,6 @@ class HammadPyTools:
     def validate_empty(self, value):
         self.validator = Validation()
         return self.validator.empty(value)
-    
-    def google(self):
-        self.google = GoogleQuery()
-        return self.google
-    
-    def huggingface(self):
-        self.huggingface = HuggingfaceQuery()
-        return self.huggingface
     
 #==============================================================================#
 
