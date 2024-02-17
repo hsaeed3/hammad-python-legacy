@@ -21,17 +21,17 @@ pip install hammadpy
 ## 1. Import the necessary modules:
 
 ```python
-
+#
 from hammadpy import HammadPy
-
+#
 ```
 
 ## 2. Instantiate the HammadPyTools class:
 
 ```python
-
+#
 tools = HammadPy
-
+#
 ```
 
 ## 3. Explore and use the tools:
@@ -39,56 +39,55 @@ tools = HammadPy
 ### Simple Styled Interaction
 
 ```python
-
+#
 tools.say("Greetings from hammad-py!", "blue")
-
+#
 ```
 
 ### Query OpenAI for a completion 
 
 ```python
-
+#
 client = tools.ai(key= " YOUR OPENAI KEY " )
 completion = client.chat(model="3", query="hello!")
-
+#
 ```
 
 ### Create a basic DataFrame
 
 ```python
-
+#
 tools.frame()
-
+#
 ```
 
 ### Text Styling:
 
 ```python
-
+#
 # Colored
 tools.say(" YOUR MESSAGE ", " COLOR ")
-
+#
 ```
 
 ## Input Handling
 
 ```python
-
+#
 answer = tools.ask.confirm("Do you want to proceed?")
 name = tools.askbox.prompt("Enter your name:", default="World")
-
+#
 ```
 
 ## LLMs with Pydantic
 
 ```python
-
-
+#
 tools.ai(key).chat("Tell me a funny joke.")  # Chat-style interaction
 tools.ai(key).instruct(system="Act as a helpful code assistant.",
                           query="Refactor this function to be more concise."
                           pymodel="Content_STR")
-
+#
 ```
 
 Fork this repository.
