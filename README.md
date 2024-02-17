@@ -1,4 +1,4 @@
-# hammad-python
+# hammadpy
 ## Hammad's Python Tools - a versatile collection of utilities and LLM integration to streamline your development.
 
 > I made this because I'm lazy.
@@ -40,7 +40,11 @@ tools = HammadPy()
 
 ```python
 #
-tools.say("Greetings from hammad-py!", "blue")
+tools.say("Greetings from hammad-py!", "blue", "bold", "black")
+tools.say("Greetings from hammad-py!",
+"color",
+"style",
+"background color")
 #
 ```
 
