@@ -62,6 +62,13 @@ class MessageStyles:
         self.bg_reset = Back.RESET
 
     def box(self, message, title=None):
+        """
+        Creates a message box with the provided message.
+
+        Args:
+            message (str): The message to display in the box.
+            title (str, optional): The title of the box.
+        """
         if title:
             message_dialog(title=title, text=message).run()
         else:
@@ -69,13 +76,13 @@ class MessageStyles:
 
     def say(self, message, color, bg=None, style=None):
         """
-        Display a styled message in the terminal.
+        Prints a styled message to the terminal.
 
         Args:
-        -   message (str): Message to be displayed in the terminal.
-        -   color (str): Text color of the message.
-        -   bg (str, optional): Background color of the message.
-        -   style (str, optional): Additional style for the message (bold, underline, etc.).
+            message (str): The message to print.
+            color (str): Text color (e.g., 'red', 'blue').
+            bg (str, optional): Background color.
+            style (str, optional): Text style (e.g., 'bold', 'underline').
         """
         color_map = {
             "black": self.text_black, "lightblack": self.text_lightblack,
@@ -112,10 +119,7 @@ class MessageStyles:
         print(f"{additional_style}{text_color}{background_color}{message}{self.text_reset}{self.bg_reset if bg else ''}")
 
 
-class Message:
+class Message(MessageStyles):
     def __init__(self, message, color, bg=None, style=None):
-        self.message = message
-        self.color = color
-        self.bg = bg
-        self.style = style
-        MessageStyles().say(self.message, self.color, self.bg, self.style)
+        super().__init__()
+        self.say(message, color, bg, style)

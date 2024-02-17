@@ -22,12 +22,21 @@ class StaticInputInteractions:
     def __init__(self):
         pass
 
+    def pause(self):
+        """
+        Pauses the program until the user presses Enter.
+        """
+        input("")
+
     def confirm(self, message: str = None):
         """
-        Prompt for user input in the terminal.
+        Prompts the user for a yes/no confirmation.
 
         Args:
-        -   message (str): Message to be displayed in the terminal.
+            message (str): The message to display to the user.
+
+        Returns:
+            bool: True if the user confirms, False otherwise.
         """
         if message:
             self.value = yes_no_dialog(title="Confirmation", text=message).run()
@@ -35,7 +44,7 @@ class StaticInputInteractions:
         else:
             print("'message' is required for prompt_confirmation()")
 
-    def asklist(self, message: str = None):
+    def ask(self, message: str = None):
         """
         Prompt for user input in the terminal.
 
@@ -50,11 +59,14 @@ class StaticInputInteractions:
 
     def choice(self, message: str = None, choices: list = None):
         """
-        Prompt for user input in the terminal.
+        Prompts the user to select from a list of choices.
 
         Args:
-        -   message (str): Message to be displayed in the terminal.
-        -   choices (list): List of choices to be displayed in the terminal.
+            message (str): The message to display to the user.
+            choices (list): A list of options for the user to choose from.
+
+        Returns:
+            str: The user's selected choice.
         """
         if message and choices:
             self.value = input_dialog(title=message, text=message, completer=WordCompleter(choices)).run()
@@ -68,7 +80,7 @@ class DynamicInputInteractions:
 
     def ask(self, message: str = None, title: str = None):
         """
-        Prompt for user input in the terminal. Messages are displayed as popups.
+        Prompt for user input in the terminal.
 
         Args:
         -   message (str): Message to be displayed in the terminal.

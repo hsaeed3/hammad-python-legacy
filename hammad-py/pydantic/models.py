@@ -12,47 +12,64 @@
 
 #==============================================================================#
 
-from typing import List
 from pydantic import BaseModel, Field
 
 #==============================================================================#
 
 
 class ContentModel_STR(BaseModel):
-    content: str = Field(..., description="STR")
+    content: str = Field
 
 class ContentModel_INT(BaseModel):
-    content: int = Field(..., description="INT")
+    content: int = Field
 
 class ListModel_STR(BaseModel):
-    list: List[str] = Field(..., description="STR")
+    list: list[str] = Field
 
 class ListModel_INT(BaseModel):
-    list: List[int] = Field(..., description="INT")
+    list: list[int] = Field
+
+class DoubleListModel_STR(BaseModel):
+    list: list[str] = Field
+    list: list[str] = Field
+
+class DoubleListModel_INT(BaseModel):
+    list: list[int] = Field
+    list: list[int] = Field
+
+class TripleListModel_STR(BaseModel):
+    list: list[str] = Field
+    list: list[str] = Field
+    list: list[str] = Field
+
+class TripleListModel_INT(BaseModel):
+    list: list[int] = Field
+    list: list[int] = Field
+    list: list[int] = Field
 
 class NestedListModel_STR(BaseModel):
-    list: List[List[str]] = Field(..., description="NESTED STR")
-    list: List[List[str]] = Field(..., description="NESTED STR")
+    list: list[list[str]] = Field
+    list: list[list[str]] = Field
 
 class NestedListModel_INT(BaseModel):
-    list: List[List[int]] = Field(..., description="NESTED INT")
-    list: List[List[int]] = Field(..., description="NESTED INT")
+    list: list[list[int]] = Field
+    list: list[list[int]] = Field
 
 class NestedListModel_INTSTR(BaseModel):
-    list: List[List[int]] = Field(..., description="NESTED INT")
-    list: List[List[str]] = Field(..., description="NESTED STR")
+    list: list[list[int]] = Field
+    list: list[list[str]] = Field
 
 class DoubleNestedListModel_STRSTR(BaseModel):
-    list: List[str] = Field(..., description="STR")
-    list: List[str] = Field(..., description="STR")
-    list: List[List[str]] = Field(..., description="NESTED STR")
-    list: List[List[str]] = Field(..., description="NESTED STR")
+    list: list[str] = Field
+    list: list[str] = Field
+    list: list[list[str]] = Field
+    list: list[list[str]] = Field
 
 class DoubleNestedListModel_INTSTR(BaseModel):
-    list: List(int) = Field(..., description="INT")
-    list: List(str) = Field(..., description="STR")
-    list: List[List[int]] = Field(..., description="NESTED INTR")
-    list: List[List[str]] = Field(..., description="NESTED STR")
+    list: list(int) = Field
+    list: list(str) = Field
+    list: list[list[int]] = Field
+    list: list[list[str]] = Field
 
 
 
