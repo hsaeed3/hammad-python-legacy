@@ -9,7 +9,7 @@
 ##== HammadPy ==###################################== Hammad's Python Tools ==## 
 ##== @/hampy ==#################################################################
 
-from .core import MessageStyles, Message
+from .core import MessageStyles
 from .core import DynamicInputInteractions, StaticInputInteractions
 from .core import Validation
 from .core import Status, Timer
@@ -36,17 +36,8 @@ class HammadPy:
         self.verify = Validation()
         self.dialog = DynamicInputInteractions()
         self.timer = Timer()
-
-    def text(self):
-        """
-        Returns an instance of the MessageStyles class.
-
-        Returns:
-        -   MessageStyles: An object for creating styled terminal output.
-        """
-        return self.text
     
-    def say(self, message : str, color : str, bg : str = None, style : str = None):
+    def say(self, message : str, color : str = None, style : str = None):
         """
         Prints a styled message to the terminal using the Message class.
 
@@ -70,62 +61,12 @@ class HammadPy:
                 - 'yellow'
                 - 'lightyellow'
             
-            bg (str, optional): The background color. Options are as follows:
-                - 'black'
-                - 'lightblack'
-                - 'blue'
-                - 'lightblue'
-                - 'cyan'
-                - 'lightcyan'
-                - 'green'
-                - 'lightgreen'
-                - 'magenta'
-                - 'lightmagenta'
-                - 'red'
-                - 'lightred'
-                - 'white'
-                - 'lightwhite'
-                - 'yellow'
-                - 'lightyellow'
-            
             style (str, optional): Text style. Options are as follows:
                 - 'reset'
                 - 'bold'
                 - 'dim'
         """
-        Message(message, color, bg, style)
-
-    def ask(self):
-        """
-        Returns the StaticInputInteractions object for static terminal input.
-
-        The StaticInputInteractions object includes the following methods:
-        - pause: Pauses the program until the user presses Enter.
-        - confirm: Prompts the user for a yes/no confirmation.
-        - ask: Prompt for user input in the terminal.
-        - choice: Prompts the user to select from a list of choices.
-
-        Returns:
-        -   StaticInputInteractions: An instance of StaticInputInteractions.
-        """
-        return self.ask
-    
-    def dialog(self):
-        """
-        Returns the DynamicInputInteractions object for dynamic terminal input.
-
-        The DynamicInputInteractions object includes the following methods:
-        - ask: Prompt for user input in the terminal.
-        - confirm: Prompt for user confirmation in the terminal.
-        - asklist: Prompt for user input from a list of choices in the terminal.
-        - radio: Display a dialog with choices offered as a radio list.
-        - checkbox: Display a dialog with choices offered as a checkbox list.
-        - button: Display a dialog with choices offered as buttons.
-
-        Returns:
-        -   DynamicInputInteractions: An instance of DynamicInputInteractions.
-        """
-        return self.dialog
+        self.text.say(message, color, style=style)
     
     def status(self):
         """
@@ -140,22 +81,9 @@ class HammadPy:
         """
         return Status()
     
-    def timer(self):
-        """
-        Returns an instance of the Timer class.
-
-        The Timer class measures and prints the execution time of a task. It includes the following methods:
-        - __enter__: Starts the timer.
-        - __exit__: Ends the timer and prints the execution time.
-
-        Returns:
-        -   Timer: An instance of Timer.
-        """
-        return self.timer
-
 #=============================================================================#
 
-class LLM:
+class LLM(OpenAIQuery):
     """
     This class represents Language Learning Models.
 
@@ -167,19 +95,7 @@ class LLM:
         ai(): Returns the OpenAIQuery instance.
     """
     def __init__(self, key : str):
-        if not key:
-            raise HPYError("OpenAI API Key is required.")
-        self.key = key
-        self.ai = OpenAIQuery(key)
-    
-    def ai(self):
-        """
-        Queries OpenAI Completions.
-
-        Returns:
-        -   OpenAIQuery: An instance of OpenAIQuery.
-        """
-        return self.ai
+        return super().__init__(key)
 
 #=============================================================================#
 

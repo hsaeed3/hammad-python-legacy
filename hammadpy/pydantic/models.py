@@ -71,40 +71,39 @@ class ListModel_INT(BaseModel):
 
 class DoubleListModel_STR(BaseModel):
     """Model for storing two lists of strings."""
-    list1: List[str] = Field(...)
-    list2: List[str] = Field(...)
+    list: List[str] = Field(...)
+    list: List[str] = Field(...)
 
 class DoubleListModel_INT(BaseModel):
     """Model for storing two lists of integers."""
-    list1: List[int] = Field(...)
-    list2: List[int] = Field(...)
+    list: List[int] = Field(...)
+    list: List[int] = Field(...)
 
 class DoubleListModel_STR(BaseModel):
     """Model for storing two lists of strings."""
-    list1: List[str] = Field(...)
-    list2: List[str] = Field(...)
+    list: List[str] = Field(...)
+    list: List[str] = Field(...)
 
 class DoubleListModel_INT(BaseModel):
     """Model for storing two lists of integers."""
-    list1: List[int] = Field(...)
-    list2: List[int] = Field(...)
+    list: List[int] = Field(...)
+    list: List[int] = Field(...)
 
 class TripleListModel_STR(BaseModel):
     """Model for storing three lists of strings."""
-    list1: List[str] = Field(...)
-    list2: List[str] = Field(...)
-    list3: List[str] = Field(...)
+    list: List[str] = Field(...)
+    list: List[str] = Field(...)
+    list: List[str] = Field(...)
 
 class TripleListModel_INT(BaseModel):
     """Model for storing three lists of integers."""
-    list1: List[int] = Field(...)
-    list2: List[int] = Field(...)
-    list3: List[int] = Field(...)
+    list: List[int] = Field(...)
+    list: List[int] = Field(...)
+    list: List[int] = Field(...)
 
 class NestedListModel_STR(BaseModel):
     """Model for storing a nested list of strings (list of lists of strings)."""
     list: List[List[str]] = Field(...)
-
 
 class NestedListModel_INT(BaseModel):
     """Model for storing a nested list of integers (list of lists of integers)."""
@@ -112,17 +111,17 @@ class NestedListModel_INT(BaseModel):
 
 class NestedListModel_INTSTR(BaseModel):
     """Model for storing a nested list with mixed integers and strings."""
-    list1: List[List[int]] = Field(...)
-    list2: List[List[str]] = Field(...)
+    list: List[List[int]] = Field(...)
+    list: List[List[str]] = Field(...)
 
 class DoubleNestedListModel_STRSTR(BaseModel):
     """Model for storing two nested lists of strings."""
-    list1: List[List[str]] = Field(...)
-    list2: List[List[str]] = Field(...)
+    list: List[List[str]] = Field(...)
+    list: List[List[str]] = Field(...)
 
 class DoubleNestedListModel_INTSTR(BaseModel):
     """Model for storing two nested lists, one of integers and one of strings."""
-    list1: List[List[int]] = Field(...)
-    list2: List[List[str]] = Field(...)
+    list: List[List[int]] = Field(...)
+    list: List[List[str]] = Field(...)
 
 

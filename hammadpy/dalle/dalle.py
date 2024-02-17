@@ -22,7 +22,7 @@ class DALL_E:
     def __init__(self, key : str):
         self.client = OpenAI(api_key=key)
 
-    def png(self, dir: str = None, prompt : str = None, size : str = ['1024x1024', '1792x1024', '1024x1792'], style : str = ['vivid', 'natural']):
+    def png(self, dir: str = None, prompt : str = None, size : str = '1024x1024', style : str = 'vivid'):
         """
         Create a PNG image from OpenAI DALL-E.
 
@@ -45,6 +45,26 @@ class DALL_E:
         img = Image.open(BytesIO(response.content))
         img.save(f"{dir}/image.png")
         return img
+    
+    def url(self, prompt : str = None, size : str = '1024x1024'):
+        """
+        Create a PNG image from OpenAI DALL-E and return the URL.
+
+        Args:
+        -   prompt (str): Prompt to generate the image. (Required)
+        -   size (str): Size of the image. (Optional)
+        -   style (str): Style of the image. (Optional)
+        """
+        response = self.client.images.generate(
+            model="dall-e-3",
+            prompt=prompt,
+            size=size,
+            quality='standard',
+            n=1,
+        )
+
+        image_url = response.data[0].url
+        return image_url
     
     def viewable_png(self, prompt : str = None, size : str = ['1024x1024', '1792x1024', '1024x1792'], style : str = ['vivid', 'natural']):
         """

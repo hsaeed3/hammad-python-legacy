@@ -45,8 +45,9 @@ class OpenAIQuery:
     def __init__(self, key: str = None):
         self.key = key
         self.ai = instructor.patch(OpenAI(api_key=self.key))
+        self.pymodel = None
         
-    def instruct(self, 
+    def instruct_model(self, 
              model: str = None, 
              system: str = None, 
              query: str = None, 
@@ -77,11 +78,13 @@ class OpenAIQuery:
             * **nested_list_intstr:** Expects a nested list with inner lists containing integers and strings (*NestedListModel_INTSTR*)
 
         """
-        if pymodel == "content_str":
+        if pymodel == None:
+            self.pymodel = ContentModel_STR
+        elif pymodel == "content_str":
             self.pymodel = ContentModel_STR
         elif pymodel == "content_int":
             self.pymodel = ContentModel_INT
-        elif pymodel == "list_str":
+        elif pymodel == "list":
             self.pymodel = ListModel_STR
         elif pymodel == "list_int":
             self.pymodel = ListModel_INT
@@ -102,14 +105,11 @@ class OpenAIQuery:
         if model == "3":
             self.model = "gpt-3.5-turbo"
         if model == "4":
-            self.model = "gpt-4-preview-1106"
+            self.model = "gpt-4-turbo-preview"
         self.system = system
         self.query = query
         if self.model == None:
             print("Model is required for invoke()")
-            return
-        elif self.pymodel == None:
-            print("Pydantic Model is required for invoke()")
             return
         elif self.system == None:
             print("System message is required for invoke()")
@@ -125,23 +125,52 @@ class OpenAIQuery:
                         response_model=self.pymodel,
                         messages=[{"role": "system", "content": self.system}, {"role": "user", "content": self.query}]
                     )
-                    assert isinstance(completion, self.pymodel)
-                    completion = completion.model_dump_json(indent=2)
-                    completion = json.loads(completion)
+                    if self.pymodel in [ContentModel_STR, ContentModel_INT]:
+                        assert hasattr(completion, 'content') and completion.content, "No completion returned."
+                    else:
+                        assert hasattr(completion, 'list') and completion.list, "No completion returned."
                     return completion
                 except AssertionError:
                     print("Assertion failed, retrying...")
                     continue
             raise ValueError("Failed to get a valid completion after 3 attempts.")
+        
+    def instruct(self, model: str = None, query: str = None, system: str = None, pymodel = None):
+        """
+        User Provided Pydantic Model Query
 
-    def chat(self, query: str = None):
+        Args:
+        -   model (str): Model to be used for the query.
+        -   query (str): Query to be sent to OpenAI.
+        -   system (str): System message to be used for the query.
+        -   pymodel (BaseModel) : Pydantic model to structure the response.
+        """
+        if pymodel == None:
+            raise Exception("Pydantic model is required for invoke_model()")
+        if model == "3":
+            self.model = "gpt-3.5-turbo-1106"
+        if model == "4":
+            self.model = "gpt-4-turbo-preview"
+        self.query = query
+        self.system = system
+        completion = self.ai.chat.completions.create(
+            model=self.model,
+            response_model=pymodel,
+            messages=[{"role": "system", "content": self.system}, {"role": "user", "content": self.query}]
+        )
+        return completion
+
+    def chat(self, model : str = None, query: str = None):
         """"
         Creates a simple, base query to OpenAI Chat Completions.
-        
         
         Args:
         -   query (str): Query to be sent to OpenAI.
         """
+        if model == "3":
+            self.model = "gpt-3.5-turbo-1106"
+        if model == "4":
+            self.model = "gpt-4-turbo-preview"
         self.query = query
         if self.query == None:
             print("Query is required for invoke()")
@@ -151,4 +180,5 @@ class OpenAIQuery:
                 model="gpt-3.5-turbo-1106",
                 messages=[{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": self.query}]
             )
+            completion = completion.choices[0].message.content
             return completion

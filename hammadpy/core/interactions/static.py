@@ -60,6 +60,7 @@ class MessageStyles:
         self.bg_yellow = Back.YELLOW
         self.bg_lightyellow = Back.LIGHTYELLOW_EX
         self.bg_reset = Back.RESET
+        pass
 
     def box(self, message, title=None):
         """
@@ -121,8 +122,3 @@ class MessageStyles:
 
         print(f"{additional_style}{text_color}{background_color}{message}{self.text_reset}{self.bg_reset if bg else ''}")
 
-
-class Message(MessageStyles):
-    def __init__(self, message, color, bg=None, style=None):
-        super().__init__()
-        self.say(message, color, bg, style)
