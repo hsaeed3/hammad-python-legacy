@@ -18,7 +18,7 @@ pip install hammadpy
 
 ### Getting Started
 
-## 1. Import the necessary modules:
+## 1. Import
 
 ```python
 #
@@ -26,15 +26,15 @@ from hammadpy import HammadPy
 #
 ```
 
-## 2. Instantiate the HammadPyTools class:
+## 2. Instantiate the HammadPy class
 
 ```python
 #
-tools = HammadPy
+tools = HammadPy()
 #
 ```
 
-## 3. Explore and use the tools:
+## 3. Explore and use the tools
 
 ### Simple Styled Interaction
 
@@ -61,7 +61,7 @@ tools.frame()
 #
 ```
 
-### Text Styling:
+### Text Styling
 
 ```python
 #
