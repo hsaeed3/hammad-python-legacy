@@ -12,6 +12,7 @@
 from .core import MessageStyles, Message
 from .core import DynamicInputInteractions, StaticInputInteractions
 from .core import Validation
+from .core import Status, Timer
 from .core import Frame
 
 from .llms import OpenAIQuery
@@ -25,7 +26,9 @@ class HPYError(Exception):
 
 #==============================================================================#
 
-class HammadPyTools:
+#==============================================================================#
+
+class HammadPy:
     """
     All Tools are accessible from this class.
     """
@@ -50,6 +53,26 @@ class HammadPyTools:
         self.key = key
         self.ai = OpenAIQuery(key)
         return self.ai
+    
+    def status(self):
+        """
+        Returns an instance of the Status class.
+
+        Returns:
+        -   Status: An instance of Status.
+        """
+        self.status = Status()
+        return self.status
+    
+    def timer(self):
+        """
+        Returns an instance of the Timer class.
+
+        Returns:
+        -   Timer: An instance of Timer.
+        """
+        self.timer = Timer()
+        return self.timer
     
     def error(self, message : str):
         """

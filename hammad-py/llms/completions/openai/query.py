@@ -13,7 +13,7 @@
 #==============================================================================#
 
 from ....llms.lib.models import QueryContentModel, QueryListModel, QueryNestedListModel
-from hammPy.pydantic import ContentModel_STR, ContentModel_INT, ListModel_STR, ListModel_INT, DoubleListModel_STR, DoubleListModel_INT, TripleListModel_STR, TripleListModel_INT, NestedListModel_STR, NestedListModel_INT, NestedListModel_INTSTR
+from ....pydantic import ContentModel_STR, ContentModel_INT, ListModel_STR, ListModel_INT, DoubleListModel_STR, DoubleListModel_INT, TripleListModel_STR, TripleListModel_INT, NestedListModel_STR, NestedListModel_INT, NestedListModel_INTSTR
 
 import os
 import json
