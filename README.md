@@ -6,9 +6,10 @@
 **Installation**
 Install hammad-py directly via pip:
 
-```
-Bash
-pip install hammad-py
+```bash
+
+pip install hammadpy
+
 ```
 
 ## Key Features
@@ -21,7 +22,7 @@ pip install hammad-py
 
 ```python
 
-from hammadpy import HammadPyTools
+from hammadpy import HammadPy
 
 ```
 
@@ -29,7 +30,7 @@ from hammadpy import HammadPyTools
 
 ```python
 
-tools = HammadPyTools()
+tools = HammadPy
 
 ```
 
@@ -47,9 +48,8 @@ tools.say("Greetings from hammad-py!", "blue")
 
 ```python
 
-key = "YOUR_OPENAI_API_KEY" 
-result = tools.ai(key).instruct(query="Write a haiku about Python")
-print(result)
+client = tools.ai(key= " YOUR OPENAI KEY " )
+completion = client.chat(model="3", query="hello!")
 
 ```
 
@@ -57,8 +57,7 @@ print(result)
 
 ```python
 
-tools.frame().create(data={'Name': ['Alice', 'Bob'], 'Age': [25, 30]})
-
+tools.frame()
 
 ```
 
@@ -66,9 +65,8 @@ tools.frame().create(data={'Name': ['Alice', 'Bob'], 'Age': [25, 30]})
 
 ```python
 
-tools.say.green("Success!")
-tools.say.emphasis("This is important!")
-tools.say.blue_on_yellow("Colorful output!")
+# Colored
+tools.say(" YOUR MESSAGE ", " COLOR ")
 
 ```
 
@@ -88,7 +86,8 @@ name = tools.askbox.prompt("Enter your name:", default="World")
 
 tools.ai(key).chat("Tell me a funny joke.")  # Chat-style interaction
 tools.ai(key).instruct(system="Act as a helpful code assistant.",
-                          query="Refactor this function to be more concise.")
+                          query="Refactor this function to be more concise."
+                          pymodel="Content_STR")
 
 ```
 
