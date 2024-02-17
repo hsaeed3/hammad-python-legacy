@@ -1,6 +1,7 @@
 README.md
 setup.py
 hammadpy/__init__.py
+hammadpy/gui.py
 hammadpy/hamPy.py
 hammadpy.egg-info/PKG-INFO
 hammadpy.egg-info/SOURCES.txt
@@ -26,3 +27,6 @@ hammadpy/llms/lib/__init__.py
 hammadpy/llms/lib/models.py
 hammadpy/pydantic/__init__.py
 hammadpy/pydantic/models.py
+hammadpy/web/__init__.py
+hammadpy/web/api.py
+hammadpy/web/request.py

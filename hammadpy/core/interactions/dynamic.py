@@ -22,11 +22,16 @@ class StaticInputInteractions:
     def __init__(self):
         pass
 
-    def pause(self):
+    def pause(self, message: str = None):
+        if not message:
+            message = """
+Press Enter to continue...
+
+"""
         """
         Pauses the program until the user presses Enter.
         """
-        input("")
+        input(message)
 
     def confirm(self, message: str = None):
         """
@@ -38,6 +43,8 @@ class StaticInputInteractions:
         Returns:
             bool: True if the user confirms, False otherwise.
         """
+        if not message:
+            message = ""
         if message:
             self.value = yes_no_dialog(title="Confirmation", text=message).run()
             return self.value
@@ -51,6 +58,14 @@ class StaticInputInteractions:
         Args:
         -   message (str): Message to be displayed in the terminal.
         """
+        if not message:
+            message = """
+"""     
+        if message:
+            message = f"""
+{message}
+
+"""
         if message:
             self.value = prompt(message)
             return self.value
@@ -68,6 +83,14 @@ class StaticInputInteractions:
         Returns:
             str: The user's selected choice.
         """
+        if not message:
+            message = """
+"""
+        if message:
+            message = f"""
+{message}
+
+"""
         if message and choices:
             self.value = input_dialog(title=message, text=message, completer=WordCompleter(choices)).run()
             return self.value
@@ -85,6 +108,8 @@ class DynamicInputInteractions:
         Args:
         -   message (str): Message to be displayed in the terminal.
         """
+        if not title:
+            title = "Input"
         if message and title:
             self.value = input_dialog(title=title, text=message).run()
             return self.value

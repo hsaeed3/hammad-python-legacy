@@ -74,7 +74,7 @@ class MessageStyles:
         else:
             message_dialog(title="Message", text=message).run()
 
-    def say(self, message, color, bg=None, style=None):
+    def say(self, message : str, color : str, bg=None, style=None):
         """
         Prints a styled message to the terminal.
 
@@ -84,6 +84,9 @@ class MessageStyles:
             bg (str, optional): Background color.
             style (str, optional): Text style (e.g., 'bold', 'underline').
         """
+        if not color:
+            color = "white"
+        
         color_map = {
             "black": self.text_black, "lightblack": self.text_lightblack,
             "blue": self.text_blue, "lightblue": self.text_lightblue,
