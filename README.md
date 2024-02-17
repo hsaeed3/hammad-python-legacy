@@ -1,4 +1,4 @@
-# hammad-py
+# hammad-python
 ## Hammad's Python Tools - a versatile collection of utilities and LLM integration to streamline your development.
 
 > A curated collection of Python functions and modules crafted to simplify common development tasks and effortlessly > integrate the power of LLMs (Large Language Models). This toolkit enhances efficiency and fosters creative > > > > experimentation across various Python applications. I made it because im lazy.
