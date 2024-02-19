@@ -13,7 +13,7 @@
 
 import requests
 
-class Requests:
+class Request:
     """
     Extends the 'requests' library with convenience functions for sending 
     and receiving data.

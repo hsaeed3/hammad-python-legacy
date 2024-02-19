@@ -1,2 +1,2 @@
-from .completions import OpenAIQuery 
-from .lib import QueryContentModel, QueryListModel, QueryNestedListModel
+from .instructor import Instructor
+from .chat import ChatOpenAI, ChatHuggingFace
