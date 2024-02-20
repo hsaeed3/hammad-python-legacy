@@ -42,7 +42,7 @@ class TextStyles:
         self.text_lightwhite = Fore.LIGHTWHITE_EX
         self.text_yellow = Fore.YELLOW
         self.text_lightyellow = Fore.LIGHTYELLOW_EX
-        self.text_reset = Style.RESET_ALL
+        self.reset = Style.RESET_ALL
         self.bg_black = Back.BLACK
         self.bg_lightblack = Back.LIGHTBLACK_EX
         self.bg_blue = Back.BLUE
@@ -111,7 +111,7 @@ class TextStyles:
         }
 
         style_map = {
-            "reset": self.text_reset,
+            "reset": self.reset,
             "bold": Style.BRIGHT,
             "dim": Style.DIM,
         }
@@ -120,5 +120,5 @@ class TextStyles:
         background_color = bg_map.get(bg, "") if bg else ""
         additional_style = style_map.get(style, "") if style else ""
 
-        print(f"{additional_style}{text_color}{background_color}{message}{self.text_reset}{self.bg_reset if bg else ''}")
+        print(f"{additional_style}{text_color}{background_color}{message}{self.reset}{self.bg_reset if bg else ''}")
 

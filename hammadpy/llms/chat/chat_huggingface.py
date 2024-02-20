@@ -9,6 +9,9 @@
 #== hammadpy ==##################################== Hammad's Python Library ==##
 #== @/llms/ask/ask_huggingface ==###############################################
 
+from hammadpy.core.interactions import TextStyles
+from hammadpy.core.interactions import Status
+
 import os 
 from langchain_community.llms import HuggingFaceHub
 from langchain.prompts import HumanMessagePromptTemplate, ChatPromptTemplate
@@ -26,6 +29,9 @@ class ChatHuggingFace:
             model_kwargs (dict, optional): Model configuration or settings.
                                            Defaults to {}.
         """
+        self.status = Status()
+        self.text = TextStyles()
+        self.text.say("Testing HF API Token...", color="blue", style="bold")
         if not repo_id:
             repo_id = "mistralai/Mixtral-8x7B-Instruct-v0.1"
         if not token:
@@ -36,6 +42,8 @@ class ChatHuggingFace:
         else:
             huggingfacehub_api_token = token
             self.llm = HuggingFaceHub(repo_id=repo_id, huggingfacehub_api_token=huggingfacehub_api_token, model_kwargs=model_kwargs)
+        self.text.say("Verified", color="green", style="bold")
+        pass
 
     def chat(self, prompt: str = None):
         """
@@ -44,6 +52,7 @@ class ChatHuggingFace:
         Args:
         -   prompt (str): Query to be sent to the model.
         """
+        self.status.enter()
         chat_template = ChatPromptTemplate.from_messages(
             [
                 SystemMessage(
@@ -56,6 +65,9 @@ class ChatHuggingFace:
         )
         messages = chat_template.format_messages(text=prompt)
         response = self.llm.invoke(messages)
+        self.status.exit()
+        self.text.say("Response:", color="green", style="bold")
+        self.text.say(response)
         return response
 
     def vocabulary(self, prompt : str = None):
@@ -66,6 +78,7 @@ class ChatHuggingFace:
         Args:
         -   prompt (str): Query to be sent to the model.
         """
+        self.status.enter()
         chat_template = ChatPromptTemplate.from_messages(
             [
                 SystemMessage(
@@ -79,6 +92,9 @@ class ChatHuggingFace:
         )
         messages = chat_template.format_messages(text=prompt)
         response = self.llm.invoke(messages)
+        self.status.exit()
+        self.text.say("Response:", color="green", style="bold")
+        self.text.say(response)
         return response
     
     def ask(self, prompt : str = None):
@@ -89,6 +105,7 @@ class ChatHuggingFace:
         Args:
         -   prompt (str): Query to be sent to the model.
         """
+        self.status.enter()
         chat_template = ChatPromptTemplate.from_messages(
             [
                 SystemMessage(
@@ -101,6 +118,9 @@ class ChatHuggingFace:
         )
         messages = chat_template.format_messages(text=prompt)
         response = self.llm.invoke(messages)
+        self.status.exit()
+        self.text.say("Response:", color="green", style="bold")
+        self.text.say(response)
         return response
     
     def plan(self, prompt : str = None):
@@ -111,6 +131,7 @@ class ChatHuggingFace:
         Args:
         -   prompt (str): Query to be sent to the model.
         """
+        self.status.enter()
         chat_template = ChatPromptTemplate.from_messages(
             [
                 SystemMessage(
@@ -127,6 +148,9 @@ class ChatHuggingFace:
         )
         messages = chat_template.format_messages(text=prompt)
         response = self.llm.invoke(messages)
+        self.status.exit()
+        self.text.say("Response:", color="green", style="bold")
+        self.text.say(response)
         return response
     
 if __name__ == "__main__":
