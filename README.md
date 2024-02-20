@@ -1,3 +1,9 @@
+
+```bash
+pip install hammadpy
+```
+
+
 # HammadPy
 
 The **HammadPy** library, is an 'accidentally' developed toolkit for simplifying a variety of tasks. <br/>
