@@ -1,10 +1,11 @@
 
+[HammadML - Beta](https://github.com/hsaeed3/hammad-machine-learning)
+
+# HammadPy
+
 ```bash
 pip install hammadpy
 ```
-
-
-# HammadPy
 
 The **HammadPy** library, is an 'accidentally' developed toolkit for simplifying a variety of tasks. <br/>
 <br/>
