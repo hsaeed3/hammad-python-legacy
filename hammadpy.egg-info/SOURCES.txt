@@ -36,6 +36,8 @@ hammadpy/ml/nlp/__init__.py
 hammadpy/ml/nlp/nlptools.py
 hammadpy/pydantic/__init__.py
 hammadpy/pydantic/pydantic_.py
+hammadpy/ui/__init__.py
+hammadpy/ui/frontend.py
 hammadpy/web/__init__.py
 hammadpy/web/api.py
 hammadpy/web/request.py

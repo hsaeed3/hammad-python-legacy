@@ -66,8 +66,10 @@ class ChatHuggingFace:
         messages = chat_template.format_messages(text=prompt)
         response = self.llm.invoke(messages)
         self.status.exit()
+        self.text.say(f"Query:", color="black", style="dim")
+        print(prompt)
         self.text.say("Response:", color="green", style="bold")
-        self.text.say(response)
+        print(response)
         return response
 
     def vocabulary(self, prompt : str = None):
@@ -93,8 +95,10 @@ class ChatHuggingFace:
         messages = chat_template.format_messages(text=prompt)
         response = self.llm.invoke(messages)
         self.status.exit()
+        self.text.say(f"Query:", color="black", style="dim")
+        print(prompt)
         self.text.say("Response:", color="green", style="bold")
-        self.text.say(response)
+        print(response)
         return response
     
     def ask(self, prompt : str = None):
@@ -119,8 +123,10 @@ class ChatHuggingFace:
         messages = chat_template.format_messages(text=prompt)
         response = self.llm.invoke(messages)
         self.status.exit()
+        self.text.say(f"Query:", color="black", style="dim")
+        print(prompt)
         self.text.say("Response:", color="green", style="bold")
-        self.text.say(response)
+        print(response)
         return response
     
     def plan(self, prompt : str = None):
@@ -149,8 +155,10 @@ class ChatHuggingFace:
         messages = chat_template.format_messages(text=prompt)
         response = self.llm.invoke(messages)
         self.status.exit()
+        self.text.say(f"Query:", color="black", style="dim")
+        print(prompt)
         self.text.say("Response:", color="green", style="bold")
-        self.text.say(response)
+        print(response)
         return response
     
 if __name__ == "__main__":
