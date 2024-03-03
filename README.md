@@ -2,7 +2,7 @@
 [![hammadpy 2.1.0](https://img.shields.io/badge/dependency-hammadpy-blue?logo=pypi&logoColor=white)](https://pypi.org/project/hammadpy)
 
 
-[Documentation]([docs._build.dirhtml.index.html](https://github.com/hsaeed3/hammad-python/blob/8942d22400c3353583e1d084b3a33773d2a77dbf/docs/_build/dirhtml/index.html))
+[docs._build.dirhtml.index.html](https://github.com/hsaeed3/hammad-python/blob/8942d22400c3353583e1d084b3a33773d2a77dbf/docs/_build/dirhtml/index.html)
 
 # HammadPy
 
