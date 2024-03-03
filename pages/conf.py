@@ -31,6 +31,7 @@ release = '2.2.1'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
+    'sphinx.ext.githubpages',
     'myst_parser'
 ]
 
