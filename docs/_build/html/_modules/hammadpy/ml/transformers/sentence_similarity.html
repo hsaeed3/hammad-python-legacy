@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hammadpy.ml.transformers.sentence_similarity &#8212; hammadpy 2.2.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../../../_static/documentation_options.js?v=16656018"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for hammadpy.ml.transformers.sentence_similarity</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">sentence_transformers</span> <span class="kn">import</span> <span class="n">SentenceTransformer</span><span class="p">,</span> <span class="n">util</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">hammadpy/ml/transformers/sentence_similarity.py</span>
+<span class="sd">Author: Hammad Saeed</span>
+<span class="sd">Contact: hammad@supportvectors.com</span>
+<span class="sd">Website: python.hammad.fun</span>
+
+<span class="sd">This module contains the SentenceSimilarity class which uses sentence transformers</span>
+<span class="sd">to compute the cosine similarity between two lists of sentences.</span>
+
+<span class="sd">Classes:</span>
+<span class="sd">    SentenceSimilarity: This class uses a SentenceTransformer model to compute the cosine similarity between two lists of sentences.</span>
+
+<span class="sd">Methods:</span>
+<span class="sd">    compute_similarity(self, sentences1: List[str], sentences2: List[str]) -&gt; List[Tuple[str, str, float]]: Computes the cosine similarity between two lists of sentences.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1">#==============================================================================#</span>
+
+<div class="viewcode-block" id="SentenceSimilarity">
+<a class="viewcode-back" href="../../../../hammadpy.ml.transformers.html#hammadpy.ml.transformers.sentence_similarity.SentenceSimilarity">[docs]</a>
+<span class="k">class</span> <span class="nc">SentenceSimilarity</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class used to compute the cosine similarity between two lists of sentences using a SentenceTransformer model.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : SentenceTransformer</span>
+<span class="sd">        a SentenceTransformer model used to compute sentence embeddings</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    compute_similarity(sentences1: List[str], sentences2: List[str]) -&gt; List[Tuple[str, str, float]]:</span>
+<span class="sd">        Computes the cosine similarity between two lists of sentences.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;all-MiniLM-L6-v2&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructs all the necessary attributes for the SentenceSimilarity object.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">            model_name : str, optional</span>
+<span class="sd">                the name of the SentenceTransformer model to use (default is &quot;all-MiniLM-L6-v2&quot;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">SentenceTransformer</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SentenceSimilarity.compute_similarity">
+<a class="viewcode-back" href="../../../../hammadpy.ml.transformers.html#hammadpy.ml.transformers.sentence_similarity.SentenceSimilarity.compute_similarity">[docs]</a>
+    <span class="k">def</span> <span class="nf">compute_similarity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sentences1</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">sentences2</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the cosine similarity between two lists of sentences.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">            sentences1 : List[str]</span>
+<span class="sd">                the first list of sentences</span>
+<span class="sd">            sentences2 : List[str]</span>
+<span class="sd">                the second list of sentences</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            List[Tuple[str, str, float]]</span>
+<span class="sd">                a list of tuples, each containing a pair of sentences and their cosine similarity</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">embeddings1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sentences1</span><span class="p">,</span> <span class="n">convert_to_tensor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">embeddings2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sentences2</span><span class="p">,</span> <span class="n">convert_to_tensor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">cosine_scores</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">cos_sim</span><span class="p">(</span><span class="n">embeddings1</span><span class="p">,</span> <span class="n">embeddings2</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">[(</span><span class="n">sentences1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sentences2</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">cosine_scores</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">())</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sentences1</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sentences2</span><span class="p">))]</span></div>
+</div>
+
+
+<span class="c1">#==============================================================================#</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../index.html">hammadpy</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Hammad Saeed.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

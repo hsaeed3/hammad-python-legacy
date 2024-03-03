@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hammadpy.core.core &#8212; hammadpy 2.2.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../../_static/documentation_options.js?v=16656018"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for hammadpy.core.core</h1><div class="highlight"><pre>
+<span></span>
+<span class="c1">#==============================================================================#</span>
+<span class="c1">#== Hammad Saeed ==============================================================#</span>
+<span class="c1">#==============================================================================#</span>
+<span class="c1">#== www.hammad.fun ============================================================#</span>
+<span class="c1">#== hammad@supportvectors.com =================================================#</span>
+<span class="c1">#==============================================================================#</span>
+
+<span class="c1">####### CORE CORE CORE CORE CORE CORE CORE CORE CORE CORE CORE CORE CORE #######</span>
+<span class="c1">#== HammadPyCore ==#############################################################</span>
+
+<span class="kn">from</span> <span class="nn">hammadpy.interactions</span> <span class="kn">import</span> <span class="n">TextStyles</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Dialog</span><span class="p">,</span> <span class="n">Status</span><span class="p">,</span> <span class="n">Timer</span><span class="p">,</span> <span class="n">Verifier</span>
+
+<span class="c1">################################################################################</span>
+
+<div class="viewcode-block" id="HammadPy">
+<a class="viewcode-back" href="../../../hammadpy.core.html#hammadpy.core.core.HammadPy">[docs]</a>
+<span class="k">class</span> <span class="nc">HammadPy</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">TextStyles</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input</span> <span class="o">=</span> <span class="n">Input</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">verify</span> <span class="o">=</span> <span class="n">Verifier</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialog</span> <span class="o">=</span> <span class="n">Dialog</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">()</span>
+
+<div class="viewcode-block" id="HammadPy.say">
+<a class="viewcode-back" href="../../../hammadpy.core.html#hammadpy.core.core.HammadPy.say">[docs]</a>
+    <span class="k">def</span> <span class="nf">say</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">color</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">style</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Prints a styled message to the terminal using the Message class.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            message (str): The message to be printed.</span>
+<span class="sd">            color (str): The text color. Options are as follows:</span>
+<span class="sd">                - &#39;black&#39;</span>
+<span class="sd">                - &#39;lightblack&#39;</span>
+<span class="sd">                - &#39;blue&#39;</span>
+<span class="sd">                - &#39;lightblue&#39;</span>
+<span class="sd">                - &#39;cyan&#39;</span>
+<span class="sd">                - &#39;lightcyan&#39;</span>
+<span class="sd">                - &#39;green&#39;</span>
+<span class="sd">                - &#39;lightgreen&#39;</span>
+<span class="sd">                - &#39;magenta&#39;</span>
+<span class="sd">                - &#39;lightmagenta&#39;</span>
+<span class="sd">                - &#39;red&#39;</span>
+<span class="sd">                - &#39;lightred&#39;</span>
+<span class="sd">                - &#39;white&#39;</span>
+<span class="sd">                - &#39;lightwhite&#39;</span>
+<span class="sd">            style (str): The text style. Options are as follows:</span>
+<span class="sd">                - &#39;bold&#39;</span>
+<span class="sd">                - &#39;dim&#39;</span>
+<span class="sd">                - &#39;italic&#39;</span>
+<span class="sd">                - &#39;underline&#39;</span>
+<span class="sd">                - &#39;blink&#39;</span>
+<span class="sd">                - &#39;reverse&#39;</span>
+<span class="sd">                - &#39;hidden&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">say</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">style</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HammadPy.status">
+<a class="viewcode-back" href="../../../hammadpy.core.html#hammadpy.core.core.HammadPy.status">[docs]</a>
+    <span class="k">def</span> <span class="nf">status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns an instance of the Status class.</span>
+
+<span class="sd">        The Status class displays a simple animated loading placeholder. It includes the following methods:</span>
+<span class="sd">        - __enter__: Starts the loading animation.</span>
+<span class="sd">        - __exit__: Stops the loading animation, clears the line, and displays execution time.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        -   Status: An instance of Status.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Status</span><span class="p">()</span></div>
+</div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">hammadpy</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Hammad Saeed.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
