@@ -1,5 +1,6 @@
 
-[HammadML - Beta](https://github.com/hsaeed3/hammad-machine-learning)
+[Pypi](https://pypi.org/project/hammadpy/)
+[Documentation](python.hammad.fun)
 
 # HammadPy
 
@@ -29,6 +30,7 @@ The **HammadPy** library, is an 'accidentally' developed toolkit for simplifying
 > - Simple & Templated LLM API Queries to OpenAI or Huggingface
 > - Modular *'instructor'* implementation (use premade models, or define own).
 > - DALLE Image Generation (URL & PNG)
+> - Huggingface Inference API's
 
 
 ---
@@ -42,6 +44,7 @@ The **HammadPy** library, is an 'accidentally' developed toolkit for simplifying
 
 
 **Web Tools**
+> - Easy UI Building with Dash
 > - Modular & Simple FastAPI Implementation
 > - Plug and play requests (Easy HTTP requests, using the 'requests library)
 
@@ -50,6 +53,7 @@ The **HammadPy** library, is an 'accidentally' developed toolkit for simplifying
 
 
 **Machine Learning Kit**
+> - SentenceBERT implementation for NLP tasks.
 > - Simple scikit-learn alogrithm implementations (Clustering, Regression, Classification)
 > - *'Essential'* natural-language tools, using spaCy and nltk.
 
