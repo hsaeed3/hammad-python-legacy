@@ -9,8 +9,7 @@
 ####### CORE CORE CORE CORE CORE CORE CORE CORE CORE CORE CORE CORE CORE #######
 #== HammadPyCore ==#############################################################
 
-from .interactions import TextStyles, Input, Dialog, Status, Timer
-from .verifiers import Verifier
+from hammadpy.interactions import TextStyles, Input, Dialog, Status, Timer, Verifier
 
 ################################################################################
 
