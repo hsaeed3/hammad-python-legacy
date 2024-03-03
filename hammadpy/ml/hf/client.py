@@ -50,7 +50,7 @@ class HfHub:
             cookies : Optional[dict], optional
                 the cookies for the request
         """
-        self.token = token if token is not None else os.getenv("HUGGINGFACE_HUB_TOKEN")
+        self.token = token if token is not None else os.getenv("HF_TOKEN")
         self.client = InferenceClient(model=model, token=self.token, timeout=timeout, 
                                       headers=headers, cookies=cookies)
         pass
