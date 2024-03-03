@@ -1,19 +1,40 @@
-
-#==============================================================================#
-#== Hammad Saeed ==============================================================#
-#==============================================================================#
-#== www.hammad.fun ============================================================#
-#== hammad@supportvectors.com =================================================#
-#==============================================================================#
-
-#== HammadML =================================================---==============#
-
 from sentence_transformers import SentenceTransformer, losses
 import torch
+
+"""
+hammadpy/ml/transformers/loss.py
+Author: Hammad Saeed
+Contact: hammad@supportvectors.com
+Website: python.hammad.fun
+
+This module contains the Loss class which uses sentence transformers
+to compute the loss between sentence embeddings.
+
+Classes:
+    Loss: This class uses a SentenceTransformer model to compute the loss between sentence embeddings.
+
+Methods:
+    initialize_loss(self, loss_type: str, data_format: str): Initializes the loss function based on the specified loss type and data format.
+"""
 
 #==============================================================================#
 
 class Loss:
+    """
+    A class used to compute the loss between sentence embeddings using a SentenceTransformer model.
+
+    Attributes
+    ----------
+    model : SentenceTransformer
+        a SentenceTransformer model used to compute sentence embeddings
+    loss : torch.nn.Module
+        a loss function used to compute the loss between sentence embeddings
+
+    Methods
+    -------
+    initialize_loss(loss_type: str, data_format: str) -> torch.nn.Module:
+        Initializes the loss function based on the specified loss type and data format.
+    """
     def __init__(self, loss_type: str, data_format: str, model_name: str = "all-MiniLM-L6-v2"):
         self.model = SentenceTransformer(model_name)
         self.loss = self.initialize_loss(loss_type, data_format)

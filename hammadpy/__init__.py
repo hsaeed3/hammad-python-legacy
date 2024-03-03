@@ -1,2 +1,5 @@
 from .core import HammadPy
-from . import *
+from .data import *
+from .web import *
+from .ml import *
+from .interactions import *

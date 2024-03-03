@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="hammadpy",
-    version="2.0.01",
+    version="2.1.0",
     author="Hammad Saeed",
     author_email="hammad@supportvectors.com",
     description="Hammad's Python Library",

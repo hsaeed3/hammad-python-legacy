@@ -1,29 +1,47 @@
-
-#==============================================================================#
-#== Hammad Saeed ==============================================================#
-#==============================================================================#
-#== www.hammad.fun ============================================================#
-#== hammad@supportvectors.com =================================================#
-#==============================================================================#
-
-#== HammadML ============---===================================================#
-
 from typing import List, Optional, Tuple
 from sentence_transformers import SentenceTransformer
+
+"""
+hammadpy/ml/transformers/sentence_embedder.py
+Author: Hammad Saeed
+Contact: hammad@supportvectors.com
+Website: python.hammad.fun
+
+This module contains the SentenceBERT class which uses sentence transformers
+to generate embeddings for a list of sentences.
+
+Classes:
+    SentenceBERT: This class uses a SentenceTransformer model to generate embeddings for a list of sentences.
+
+Methods:
+    encode(self, sentences: List[str]) -> List[Tuple[str, List[float]]]: Encodes a list of sentences into embeddings.
+"""
 
 #==============================================================================#
 
 class SentenceBERT:
     """
     A class for generating sentence embeddings using the SentenceTransformers library.
+    
+    Attributes
+    ----------
+    model : SentenceTransformer
+        a SentenceTransformer model used to generate sentence embeddings
+
+    Methods
+    -------
+    encode(sentences: List[str]) -> List[Tuple[str, List[float]]]:
+        Encodes a list of sentences into embeddings.
     """
 
     def __init__(self, model_name: Optional[str] = "all-MiniLM-L6-v2"):
         """
         Initializes the SentenceEmbedder with a specified model.
 
-        Args:
-            model_name (Optional[str]): The name of the SentenceTransformer model to use.
+        Parameters
+        ----------
+            model_name : str, optional
+                the name of the SentenceTransformer model to use (default is "all-MiniLM-L6-v2")
         """
         if not model_name:
             raise ValueError("Model name cannot be None")
@@ -33,11 +51,15 @@ class SentenceBERT:
         """
         Encodes a list of sentences into embeddings.
 
-        Args:
-            sentences (List[str]): A list of sentences to encode.
+        Parameters
+        ----------
+            sentences : List[str]
+                the list of sentences to encode
 
-        Returns:
-            List[Tuple[str, List[float]]]: A list of tuples where each tuple contains the original sentence and its corresponding embedding.
+        Returns
+        -------
+            List[Tuple[str, List[float]]]
+                a list of tuples containing the original sentences and their embeddings
         """
         if not sentences:
             raise ValueError("Sentences list cannot be empty")

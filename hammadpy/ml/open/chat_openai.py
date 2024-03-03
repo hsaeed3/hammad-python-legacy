@@ -1,30 +1,70 @@
-
-#==============================================================================#
-#== Hammad Saeed ==============================================================#
-#==============================================================================#
-#== www.hammad.fun ============================================================#
-#== hammad@supportvectors.com =================================================#
-#==============================================================================#
-
-#== hammadpy ==##################################== Hammad's Python Library ==##
-#== @/llms/chat/chat_openai ==##################################################
-
-#==============================================================================#
-
 import os
 from openai import OpenAI
 import instructor
-
 from hammadpy.interactions.messages import TextStyles
 from hammadpy.interactions.status import Status
-
 from typing import List, Optional
 from pydantic import BaseModel, Field
+
+"""
+hammadpy/ml/open/chat_openai.py
+Author: Hammad Saeed
+Contact: hammad@supportvectors.com
+Website: python.hammad.fun
+
+This module contains the ChatOpenAI class which uses OpenAI's Chat Completions
+to generate responses to user queries.
+
+Classes:
+    ChatOpenAI: This class uses OpenAI's Chat Completions to generate responses to user queries.
+
+Methods:
+    chat(self, query: str = None, model : str = 'gpt-3.5-turbo-1106', ): Creates a simple, base query to OpenAI Chat Completions.
+    ask(self, query: str = None, model : str = 'gpt-3.5-turbo-1106'): Asks a question, using OpenAI Chat Completions.
+    code(self, query: str = None, model: str = 'gpt-3.5-turbo'): Generates 1 finished line of code, depending on the query.
+    command(self, query: str = None, model : str = 'gpt-3.5-turbo-1106'): Generates a terminal command, depending on the query.
+    vocabulary(self, query: str = None, model : str = 'gpt-3.5-turbo-1106', ): Upscales the vocabulary of a query, using OpenAI Chat Completions.
+    plan(self, query: str = None, model : str = 'gpt-3.5-turbo-1106'): Creates a plan, using OpenAI Chat Completions.
+"""
 
 #==============================================================================#
 
 class ChatOpenAI:
+    """
+    A class used to generate responses to user queries using OpenAI's Chat Completions.
+
+    Attributes
+    ----------
+    llm : OpenAI
+        an OpenAI object used to interact with the OpenAI API
+    status : Status
+        a Status object used to manage the status of the OpenAI API
+    text : TextStyles
+        a TextStyles object used to format text
+    
+    Methods
+    -------
+    chat(query: str = None, model : str = 'gpt-3.5-turbo-1106', ): Creates a simple, base query to OpenAI Chat Completions.
+    ask(query: str = None, model : str = 'gpt-3.5-turbo-1106'): Asks a question, using OpenAI Chat Completions.
+    code(query: str = None, model: str = 'gpt-3.5-turbo'): Generates 1 finished line of code, depending on the query.
+    command(query: str = None, model : str = 'gpt-3.5-turbo-1106'): Generates a terminal command, depending on the query.
+    vocabulary(query: str = None, model : str = 'gpt-3.5-turbo-1106', ): Upscales the vocabulary of a query, using OpenAI Chat Completions.
+    plan(query: str = None, model : str = 'gpt-3.5-turbo-1106'): Creates a plan, using OpenAI Chat Completions.
+    """
     def __init__(self, key: str = None):
+        """
+        Constructs all the necessary attributes for the ChatOpenAI object.
+
+        Parameters
+        ----------
+            key : str, optional
+                the OpenAI API key to use (default is None)
+
+        Raises
+        ------
+        ValueError
+            If the API key is not available
+        """
         self.pymodel = None
         self.status = Status()
         self.text = TextStyles()
@@ -45,9 +85,15 @@ class ChatOpenAI:
     def chat(self, query: str = None, model : str = 'gpt-3.5-turbo-1106', ):
         """"
         Creates a simple, base query to OpenAI Chat Completions.
-        
-        Args:
-        -   query (str): Query to be sent to OpenAI.
+
+        Parameters
+        ----------
+        query : str, optional
+            the query to be sent to OpenAI (default is None)
+
+        Returns
+        -------
+        str
         """
         self.model = model
         if model == "3":
@@ -74,9 +120,17 @@ class ChatOpenAI:
     def ask(self, query: str = None, model : str = 'gpt-3.5-turbo-1106'):
         """"
         Asks a question, using OpenAI Chat Completions.
-        
-        Args:
-        -   query (str): Query to be sent to OpenAI.
+
+        Parameters
+        ----------
+        query : str, optional
+            the query to be sent to OpenAI (default is None)
+        model : str, optional
+            the model to be used for the completion (default is 'gpt-3.5-turbo-1106')
+
+        Returns
+        -------
+        str
         """
         self.llm = instructor.patch(self.llm)
 
@@ -111,9 +165,14 @@ class ChatOpenAI:
         """
         Generates 1 finished line of code, depending on the query.
 
-        Args:
-        -   query (str): Query to be sent to OpenAI.
-        -   model (str): Model to be used for the completion.
+        Parameters
+        ----------
+        query : str, optional
+            the query to be sent to OpenAI (default is None)    
+
+        Returns
+        -------
+        str
         """
         self.llm = instructor.patch(self.llm)
 
@@ -148,9 +207,16 @@ class ChatOpenAI:
         """
         Generates a terminal command, depending on the query.
 
-        Args:
-        -   query (str): Query to be sent to OpenAI.
-        -   model (str): Model to be used for the completion.
+        Parameters
+        ----------
+        query : str, optional
+            the query to be sent to OpenAI (default is None)
+        model : str, optional
+            the model to be used for the completion (default is 'gpt-3.5-turbo-1106')
+
+        Returns
+        -------
+        str
         """
         self.llm = instructor.patch(self.llm)
 
@@ -184,9 +250,17 @@ class ChatOpenAI:
     def vocabulary(self, query: str = None, model : str = 'gpt-3.5-turbo-1106', ):
         """"
         Upscales the vocabulary of a query, using OpenAI Chat Completions.
-        
-        Args:
-        -   query (str): Query to be sent to OpenAI.
+
+        Parameters
+        ----------
+        query : str, optional
+            the query to be sent to OpenAI (default is None)
+        model : str, optional
+            the model to be used for the completion (default is 'gpt-3.5-turbo-1106')
+
+        Returns
+        -------
+        str
         """
         self.llm = instructor.patch(self.llm)
 
@@ -220,8 +294,14 @@ class ChatOpenAI:
         """"
         Creates a plan, using OpenAI Chat Completions.
         
-        Args:
-        -   query (str): Query to be sent to OpenAI.
+        Parameters
+        ----------
+        query : str, optional
+            the query to be sent to OpenAI (default is None)
+
+        Returns
+        -------
+        str
         """
         self.llm = instructor.patch(self.llm)
 

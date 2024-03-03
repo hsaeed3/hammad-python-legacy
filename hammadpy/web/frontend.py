@@ -51,7 +51,6 @@ class UIBlocks:
     Tabs = dcc.Tabs
     Tab = dcc.Tab
     Markdown = dcc.Markdown
-    ColorPicker = dcc.ColorPicker
     Badge = html.Span  
     Breadcrumb = html.Nav  
     Card = html.Div  
@@ -98,7 +97,7 @@ class UI:
         """
         return block
 
-    def add_block(self, block: Union[UIBlocks.Div, UIBlocks.Graph, UIBlocks.H1, UIBlocks.H2, UIBlocks.H3, UIBlocks.H4, UIBlocks.H5, UIBlocks.H6, UIBlocks.Dropdown, UIBlocks.Slider, UIBlocks.Checklist, UIBlocks.RadioItems, UIBlocks.DatePickerSingle, UIBlocks.DatePickerRange, UIBlocks.Input, UIBlocks.Textarea, UIBlocks.Upload, UIBlocks.Button, UIBlocks.Img, UIBlocks.Label, UIBlocks.Link, UIBlocks.List, UIBlocks.ListItem, UIBlocks.Table, UIBlocks.TableCell, UIBlocks.TableHeader, UIBlocks.TableRow, UIBlocks.IFrame, UIBlocks.Video, UIBlocks.Audio, UIBlocks.Progress, UIBlocks.Marquee, UIBlocks.Interval, UIBlocks.Location, UIBlocks.Tabs, UIBlocks.Tab, UIBlocks.Markdown, UIBlocks.ColorPicker, UIBlocks.Badge, UIBlocks.Breadcrumb, UIBlocks.Card, UIBlocks.Collapse, UIBlocks.Modal, UIBlocks.Tooltip, UIBlocks.Spinner, UIBlocks.Alert, UIBlocks.Accordion, UIBlocks.ConfirmDialog, UIBlocks.ConfirmDialogProvider, UIBlocks.Store]):
+    def add_block(self, block: Union[UIBlocks.Div, UIBlocks.Graph, UIBlocks.H1, UIBlocks.H2, UIBlocks.H3, UIBlocks.H4, UIBlocks.H5, UIBlocks.H6, UIBlocks.Dropdown, UIBlocks.Slider, UIBlocks.Checklist, UIBlocks.RadioItems, UIBlocks.DatePickerSingle, UIBlocks.DatePickerRange, UIBlocks.Input, UIBlocks.Textarea, UIBlocks.Upload, UIBlocks.Button, UIBlocks.Img, UIBlocks.Label, UIBlocks.Link, UIBlocks.List, UIBlocks.ListItem, UIBlocks.Table, UIBlocks.TableCell, UIBlocks.TableHeader, UIBlocks.TableRow, UIBlocks.IFrame, UIBlocks.Video, UIBlocks.Audio, UIBlocks.Progress, UIBlocks.Marquee, UIBlocks.Interval, UIBlocks.Location, UIBlocks.Tabs, UIBlocks.Tab, UIBlocks.Markdown, UIBlocks.Badge, UIBlocks.Breadcrumb, UIBlocks.Card, UIBlocks.Collapse, UIBlocks.Modal, UIBlocks.Tooltip, UIBlocks.Spinner, UIBlocks.Alert, UIBlocks.Accordion, UIBlocks.ConfirmDialog, UIBlocks.ConfirmDialogProvider, UIBlocks.Store]):
         """
         Adds a new block to the Dash layout. The block can be any supported Dash component from the UIBlocks class.
 

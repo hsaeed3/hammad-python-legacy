@@ -1,25 +1,36 @@
-
-#==============================================================================#
-#== Hammad Saeed ==============================================================#
-#==============================================================================#
-#== www.hammad.fun ============================================================#
-#== hammad@supportvectors.com =================================================#
-#==============================================================================#
-
-##== HamPy ==######################################== Hammad's Python Tools ==#
-##== @/core/interactions/input ==##############################################
-##== Styled CLI Inputs ==######################################################
-
-#==============================================================================#
-
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.shortcuts import input_dialog, yes_no_dialog, button_dialog, radiolist_dialog, checkboxlist_dialog
+
+"""
+hammadpy.interactions.inputs
+Author: Hammad Saeed
+Contact: hammad@supportvectors.com
+Website: python.hammad.fun
+
+This module contains the Input and Dialog classes which provide a simple interface for user input and dialog boxes.
+
+Classes:
+    Input: This class provides a simple interface for user input.
+    Dialog: This class provides a simple interface for dialog boxes.
+"""
 
 #==============================================================================#
 
 class Input:
     def __init__(self):
+        """
+        Initializes the Input class.
+
+        Args:
+            None
+
+        Methods:
+            pause(self, message: str = None): Pauses the program and waits for user input.
+            confirm(self, message: str = None): Prompts the user for a yes/no confirmation.
+            ask(self, message: str = None): Prompt for user input in the terminal.
+            choice(self, message: str = None, choices: list = None): Prompts the user to select from a list of choices.
+        """
         pass
 
     def pause(self, message: str = None):
@@ -28,9 +39,6 @@ class Input:
 Press Enter to continue...
 
 """
-        """
-        Pauses the program until the user presses Enter.
-        """
         input(message)
 
     def confirm(self, message: str = None):
