@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>hammadpy.ml.transformers package &#8212; hammadpy 2.2.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=16656018"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="hammadpy-ml-transformers-package">
+<h1>hammadpy.ml.transformers package<a class="headerlink" href="#hammadpy-ml-transformers-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-hammadpy.ml.transformers.cross_encoder">
+<span id="hammadpy-ml-transformers-cross-encoder-module"></span><h2>hammadpy.ml.transformers.cross_encoder module<a class="headerlink" href="#module-hammadpy.ml.transformers.cross_encoder" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hammadpy.ml.transformers.cross_encoder.XEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hammadpy.ml.transformers.cross_encoder.</span></span><span class="sig-name descname"><span class="pre">XEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hammadpy/ml/transformers/cross_encoder.html#XEncoder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hammadpy.ml.transformers.cross_encoder.XEncoder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="hammadpy.ml.transformers.cross_encoder.XEncoder.rank">
+<span class="sig-name descname"><span class="pre">rank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/hammadpy/ml/transformers/cross_encoder.html#XEncoder.rank"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hammadpy.ml.transformers.cross_encoder.XEncoder.rank" title="Link to this definition">¶</a></dt>
+<dd><p>Re-ranks pairs formed by two lists of chunks based on their relevance to a single query using the CrossEncoder model.</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>query<span class="classifier">str</span></dt><dd><p>the query to use for re-ranking</p>
+</dd>
+<dt>x<span class="classifier">List[str]</span></dt><dd><p>the first list of chunks</p>
+</dd>
+<dt>y<span class="classifier">List[str]</span></dt><dd><p>the second list of chunks</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>List[Tuple[int, float]]</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-hammadpy.ml.transformers.loss">
+<span id="hammadpy-ml-transformers-loss-module"></span><h2>hammadpy.ml.transformers.loss module<a class="headerlink" href="#module-hammadpy.ml.transformers.loss" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hammadpy.ml.transformers.loss.Loss">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hammadpy.ml.transformers.loss.</span></span><span class="sig-name descname"><span class="pre">Loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loss_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'all-MiniLM-L6-v2'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hammadpy/ml/transformers/loss.html#Loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hammadpy.ml.transformers.loss.Loss" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class used to compute the loss between sentence embeddings using a SentenceTransformer model.</p>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>model<span class="classifier">SentenceTransformer</span></dt><dd><p>a SentenceTransformer model used to compute sentence embeddings</p>
+</dd>
+<dt>loss<span class="classifier">torch.nn.Module</span></dt><dd><p>a loss function used to compute the loss between sentence embeddings</p>
+</dd>
+</dl>
+</section>
+<section id="methods">
+<h3>Methods<a class="headerlink" href="#methods" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>initialize_loss(loss_type: str, data_format: str) -&gt; torch.nn.Module:</dt><dd><p>Initializes the loss function based on the specified loss type and data format.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="hammadpy.ml.transformers.loss.Loss.initialize_loss">
+<span class="sig-name descname"><span class="pre">initialize_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loss_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hammadpy/ml/transformers/loss.html#Loss.initialize_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hammadpy.ml.transformers.loss.Loss.initialize_loss" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-hammadpy.ml.transformers.semantic_search">
+<span id="hammadpy-ml-transformers-semantic-search-module"></span><h2>hammadpy.ml.transformers.semantic_search module<a class="headerlink" href="#module-hammadpy.ml.transformers.semantic_search" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hammadpy.ml.transformers.semantic_search.SemanticSearch">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hammadpy.ml.transformers.semantic_search.</span></span><span class="sig-name descname"><span class="pre">SemanticSearch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'all-MiniLM-L6-v2'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hammadpy/ml/transformers/semantic_search.html#SemanticSearch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hammadpy.ml.transformers.semantic_search.SemanticSearch" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class used to perform semantic search on a list of sentences using a SentenceTransformer model.</p>
+<section id="id1">
+<h3>Attributes<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>model<span class="classifier">SentenceTransformer</span></dt><dd><p>a SentenceTransformer model used to compute sentence embeddings</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h3>Methods<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>encode_corpus(corpus: List[str]) -&gt; torch.Tensor:</dt><dd><p>Encodes a list of sentences into embeddings.</p>
+</dd>
+<dt>search(query: str, corpus_embeddings: torch.Tensor, corpus: List[str], top_k: int = 5) -&gt; List[Tuple[str, float]]:</dt><dd><p>Performs semantic search on a list of sentences.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="hammadpy.ml.transformers.semantic_search.SemanticSearch.encode_corpus">
+<span class="sig-name descname"><span class="pre">encode_corpus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corpus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="_modules/hammadpy/ml/transformers/semantic_search.html#SemanticSearch.encode_corpus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hammadpy.ml.transformers.semantic_search.SemanticSearch.encode_corpus" title="Link to this definition">¶</a></dt>
+<dd><p>Encodes a list of sentences into embeddings.</p>
+<section id="id3">
+<h4>Parameters<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><dl class="simple">
+<dt>corpus<span class="classifier">List[str]</span></dt><dd><p>the list of sentences to encode</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id4">
+<h4>Returns<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>torch.Tensor</dt><dd><p>a tensor containing the embeddings of the sentences</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hammadpy.ml.transformers.semantic_search.SemanticSearch.search">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">corpus_embeddings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">corpus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/hammadpy/ml/transformers/semantic_search.html#SemanticSearch.search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hammadpy.ml.transformers.semantic_search.SemanticSearch.search" title="Link to this definition">¶</a></dt>
+<dd><p>Performs semantic search on a list of sentences.</p>
+<section id="id5">
+<h4>Parameters<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><dl class="simple">
+<dt>query<span class="classifier">str</span></dt><dd><p>the query sentence</p>
+</dd>
+<dt>corpus_embeddings<span class="classifier">torch.Tensor</span></dt><dd><p>the embeddings of the corpus sentences</p>
+</dd>
+<dt>corpus<span class="classifier">List[str]</span></dt><dd><p>the list of sentences to search</p>
+</dd>
+<dt>top_k<span class="classifier">int, optional</span></dt><dd><p>the number of results to return (default is 5)</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id6">
+<h4>Returns<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><dl class="simple">
+<dt>List[Tuple[str, float]]</dt><dd><p>a list of tuples, each containing a sentence from the corpus and its similarity score to the query</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-hammadpy.ml.transformers.sentence_embedder">
+<span id="hammadpy-ml-transformers-sentence-embedder-module"></span><h2>hammadpy.ml.transformers.sentence_embedder module<a class="headerlink" href="#module-hammadpy.ml.transformers.sentence_embedder" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hammadpy.ml.transformers.sentence_embedder.SentenceBERT">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hammadpy.ml.transformers.sentence_embedder.</span></span><span class="sig-name descname"><span class="pre">SentenceBERT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'all-MiniLM-L6-v2'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hammadpy/ml/transformers/sentence_embedder.html#SentenceBERT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hammadpy.ml.transformers.sentence_embedder.SentenceBERT" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class for generating sentence embeddings using the SentenceTransformers library.</p>
+<section id="id7">
+<h3>Attributes<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>model<span class="classifier">SentenceTransformer</span></dt><dd><p>a SentenceTransformer model used to generate sentence embeddings</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h3>Methods<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>encode(sentences: List[str]) -&gt; List[Tuple[str, List[float]]]:</dt><dd><p>Encodes a list of sentences into embeddings.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="hammadpy.ml.transformers.sentence_embedder.SentenceBERT.encode">
+<span class="sig-name descname"><span class="pre">encode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentences</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/hammadpy/ml/transformers/sentence_embedder.html#SentenceBERT.encode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hammadpy.ml.transformers.sentence_embedder.SentenceBERT.encode" title="Link to this definition">¶</a></dt>
+<dd><p>Encodes a list of sentences into embeddings.</p>
+<section id="id9">
+<h4>Parameters<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><dl class="simple">
+<dt>sentences<span class="classifier">List[str]</span></dt><dd><p>the list of sentences to encode</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id10">
+<h4>Returns<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><dl class="simple">
+<dt>List[Tuple[str, List[float]]]</dt><dd><p>a list of tuples containing the original sentences and their embeddings</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-hammadpy.ml.transformers.sentence_similarity">
+<span id="hammadpy-ml-transformers-sentence-similarity-module"></span><h2>hammadpy.ml.transformers.sentence_similarity module<a class="headerlink" href="#module-hammadpy.ml.transformers.sentence_similarity" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="hammadpy.ml.transformers.sentence_similarity.SentenceSimilarity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hammadpy.ml.transformers.sentence_similarity.</span></span><span class="sig-name descname"><span class="pre">SentenceSimilarity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'all-MiniLM-L6-v2'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hammadpy/ml/transformers/sentence_similarity.html#SentenceSimilarity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hammadpy.ml.transformers.sentence_similarity.SentenceSimilarity" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class used to compute the cosine similarity between two lists of sentences using a SentenceTransformer model.</p>
+<section id="id11">
+<h3>Parameters<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>model<span class="classifier">SentenceTransformer</span></dt><dd><p>a SentenceTransformer model used to compute sentence embeddings</p>
+</dd>
+</dl>
+</section>
+<section id="id12">
+<h3>Methods<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>compute_similarity(sentences1: List[str], sentences2: List[str]) -&gt; List[Tuple[str, str, float]]:</dt><dd><p>Computes the cosine similarity between two lists of sentences.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="hammadpy.ml.transformers.sentence_similarity.SentenceSimilarity.compute_similarity">
+<span class="sig-name descname"><span class="pre">compute_similarity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentences1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sentences2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/hammadpy/ml/transformers/sentence_similarity.html#SentenceSimilarity.compute_similarity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hammadpy.ml.transformers.sentence_similarity.SentenceSimilarity.compute_similarity" title="Link to this definition">¶</a></dt>
+<dd><p>Computes the cosine similarity between two lists of sentences.</p>
+<section id="id13">
+<h4>Parameters<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><dl class="simple">
+<dt>sentences1<span class="classifier">List[str]</span></dt><dd><p>the first list of sentences</p>
+</dd>
+<dt>sentences2<span class="classifier">List[str]</span></dt><dd><p>the second list of sentences</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id14">
+<h4>Returns<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><dl class="simple">
+<dt>List[Tuple[str, str, float]]</dt><dd><p>a list of tuples, each containing a pair of sentences and their cosine similarity</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-hammadpy.ml.transformers">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hammadpy.ml.transformers" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">hammadpy</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Hammad Saeed.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/hammadpy.ml.transformers.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
