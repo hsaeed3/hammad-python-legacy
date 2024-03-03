@@ -20,6 +20,12 @@ hammadpy/ml/hf/__init__.py
 hammadpy/ml/hf/client.py
 hammadpy/ml/open/__init__.py
 hammadpy/ml/open/chat_openai.py
+hammadpy/ml/transformers/__init__.py
+hammadpy/ml/transformers/cross_encoder.py
+hammadpy/ml/transformers/loss.py
+hammadpy/ml/transformers/semantic_search.py
+hammadpy/ml/transformers/sentence_embedder.py
+hammadpy/ml/transformers/sentence_similarity.py
 hammadpy/web/__init__.py
 hammadpy/web/api.py
 hammadpy/web/frontend.py

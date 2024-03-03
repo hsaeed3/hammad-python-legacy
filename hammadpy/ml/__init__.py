@@ -1,2 +1,2 @@
-from .openai import ChatOpenAI
+from .open import ChatOpenAI
 from . import *
