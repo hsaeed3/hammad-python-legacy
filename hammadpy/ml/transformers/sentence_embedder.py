@@ -34,7 +34,7 @@ class SentenceBERT:
         Encodes a list of sentences into embeddings.
     """
 
-    def __init__(self, model_name: Optional[str] = "all-MiniLM-L6-v2"):
+    def __init__(self, model_name: Optional[str] = "jinaai/jina-embeddings-v2-base-en"):
         """
         Initializes the SentenceEmbedder with a specified model.
 

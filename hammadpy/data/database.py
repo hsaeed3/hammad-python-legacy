@@ -19,7 +19,6 @@ import pandas as pd
 from typing import Optional, List, Dict, Union, Tuple
 
 #==============================================================================#
-
 class Database:
     def __init__(self, index_dir: Optional[str] = None, content: Optional[Union[str, Tuple, List]] = None,
                  schema: Optional[Schema] = None):

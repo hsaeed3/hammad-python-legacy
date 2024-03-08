@@ -1,21 +1,26 @@
-
-#==============================================================================#
-#== Hammad Saeed ==============================================================#
-#==============================================================================#
-#== www.hammad.fun ============================================================#
-#== hammad@supportvectors.com =================================================#
-#==============================================================================#
-
-#== HammadML ==================================================================#
-
 from hammadpy import HammadPy
-
 import os
 import uuid
 from typing import Union, List, Tuple
 from annoy import AnnoyIndex
 from sentence_transformers import SentenceTransformer
 import glob
+
+"""
+hammadpy.data.vector_database
+Author: Hammad Saeed
+Contact: hammad@supportvectors.com
+Website: python.hammad.fun
+
+This module contains the VectorDatabase class which uses sentence transformers
+to build and search a vector database using Annoy.
+
+Classes:
+    VectorDatabase: This class uses a SentenceTransformer model to build and search a vector database using Annoy.
+
+Methods:    
+    search(self, query: str, k: int) -> List[Tuple[int, str]]: Searches the index for the k most similar vectors to the query.
+"""
 
 #==============================================================================#
 

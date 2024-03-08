@@ -10,6 +10,8 @@
 from hammadpy import HammadPy
 from dash import Dash, html, dcc
 from typing import List, Dict, Optional, Union
+import sys
+import os
 
 #==============================================================================#
 
@@ -139,6 +141,19 @@ class UI:
         """
         self.hpy.say("Starting HammadDash app...", "lightblack", "dim")
         self.app.run_server(debug=self.debug)
+        # Quit once the app is closed
+        def cleanup():
+            """
+            Cleans up resources and exits the application.
+            """
+            # Stop the Dash app
+            hammad_dash.app.server.stop()
+
+            # Close the port
+            os._exit(0)
+
+        # Register the cleanup function to be called on exit
+        sys.exitfunc = cleanup
 
 #==============================================================================#
 
