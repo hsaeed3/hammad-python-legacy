@@ -1,7 +1,7 @@
 
 [![hammadpy 2.1.0](https://img.shields.io/badge/dependency-hammadpy-blue?logo=pypi&logoColor=white)](https://pypi.org/project/hammadpy)
 
-[Documentation](https://python.hammad.fun)
+[python.hammad.fun](https://python.hammad.fun)
 
 # HammadPy
 
