@@ -41,7 +41,7 @@ class SentenceBERT:
         Encodes a list of sentences into embeddings.
     """
 
-    def __init__(self, model_name: Optional[str] = "jinaai/jina-embeddings-v2-base-en"):
+    def __init__(self, model_name: Optional[str] = "all-MiniLM-L6-v2"):
         """
         Initializes the SentenceEmbedder with a specified model.
 
@@ -145,21 +145,10 @@ class VectorDatabase:
         else:
             raise ValueError("Invalid list content for input_data.")
 
-    def _load_sentences_from_directory(self, directory: str) -> Tuple[List[str], List[str]]:
-        sentences = []
-        document_ids = []
-        for file_path in glob.glob(os.path.join(directory, '*.txt')):
-            with open(file_path, 'r', encoding='utf-8') as file:
-                file_sentences = file.readlines()
-                file_id = str(uuid.uuid4())
-                sentences.extend(file_sentences)
-                document_ids.extend([file_id] * len(file_sentences))  
-        return sentences, document_ids
-
     def _build_index_from_sentences(self):
         self.index = AnnoyIndex(self.dimension, 'angular')
         for i, sentence in enumerate(self.sentences):
-            vector = self.model.encode(sentence) if self.model else self.vectors[i]
+            vector = self.model.encode([sentence])[0] if self.model else self.vectors[i]
             self.index.add_item(i, vector)
         self.index.build(self.num_trees)
 
@@ -169,12 +158,19 @@ class VectorDatabase:
             self.index.add_item(i, vector)
         self.index.build(self.num_trees)
 
-    def search(self, query: str, k: int) -> List[Tuple[int, str]]:
+    def search(self, query: str, k: int = 5) -> List[Tuple[int, str]]:
         if not self.index:
             raise ValueError("Index has not been built or loaded.")
         query_vector = self.model.encode([query])[0] if self.model else query
         indices = self.index.get_nns_by_vector(query_vector, k, include_distances=False)
-        return [(indices[i], self.document_ids[indices[i]]) for i in range(len(indices))]
+        results = []
+        for index in indices:
+            sentence = self.sentences[index]
+            document_id = self.document_ids[index]
+            vector = self.index.get_item_vector(index)
+            results.append((index, document_id, vector, sentence))
+
+        
 
 #==============================================================================#
 
