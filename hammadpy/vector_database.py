@@ -1,4 +1,4 @@
-from hammadpy import Modules
+from hammadpy import Core
 import os
 import uuid
 from typing import Union, List, Tuple, Optional
@@ -88,7 +88,7 @@ class VectorDatabase:
             model_name (str): The pre-trained SentenceTransformers model name (ignored if vectors are provided).
             num_trees (int): The number of trees for the Annoy index.
         """
-        self.hpy = Modules()
+        self.hpy = Core()
         self.model = SentenceTransformer(model_name) if not isinstance(input_data, list) or isinstance(input_data[0], str) else None
         self.num_trees = num_trees
         self.index = None
@@ -96,35 +96,35 @@ class VectorDatabase:
         self.document_ids = [] 
 
         if isinstance(input_data, str):
-            self.hpy.say("Detected string input for input_data...", "lightblack", "dim")
-            self.hpy.say(f"Building vector index using {len(input_data)} entries.", "lightblack", "dim")
+            self.hpy.say("Detected string input for input_data...", "lightblack", style="dim")
+            self.hpy.say(f"Building vector index using {len(input_data)} entries.", "lightblack", style="dim")
             self._handle_string_input(input_data)
-            self.hpy.say("Index built successfully.", "lightblue", "dim")
+            self.hpy.say("Index built successfully.", "lightblue", style="dim")
         elif isinstance(input_data, list):
-            self.hpy.say("Detected list input for input_data...", "lightblack", "dim")
-            self.hpy.say(f"Building vector index using {len(input_data)} entries.", "lightblack", "dim")
-            self.hpy.say("Building Vector Index...", "yellow", "dim")
+            self.hpy.say("Detected list input for input_data...", "lightblack", style="dim")
+            self.hpy.say(f"Building vector index using {len(input_data)} entries.", "lightblack", style="dim")
+            self.hpy.say("Building Vector Index...", "yellow", style="dim")
             self._handle_list_input(input_data)
-            self.hpy.say("Index built successfully.", "lightblue", "dim")
+            self.hpy.say("Index built successfully.", "lightblue", style="dim")
         elif isinstance(input_data, AnnoyIndex):
-            self.hpy.say("Detected an Annoy Index for input_data...", "lightblack", "dim")
+            self.hpy.say("Detected an Annoy Index for input_data...", "lightblack", style="dim")
             self.index = input_data
         else:
             raise ValueError("Invalid type for input_data.")
 
-        self.hpy.say("Loading Vector Database...", "lightblack", "dim")
+        self.hpy.say("Loading Vector Database...", "lightblack", style="dim")
         if hasattr(self, 'sentences') and self.sentences:
-            self.hpy.say("Detected 'sentences' key..", "lightblack", "dim")
-            self.hpy.say(f"Loading {len(self.sentences)} entries.", "lightblack", "dim")
+            self.hpy.say("Detected 'sentences' key..", "lightblack", style="dim")
+            self.hpy.say(f"Loading {len(self.sentences)} entries.", "lightblack", style="dim")
             self._build_index_from_sentences()
-            self.hpy.say("Vector Index built successfully.", "lightblue", "dim")
-            self.hpy.say("Vector Database loaded.", "blue", "dim")
+            self.hpy.say("Vector Index built successfully.", "lightblue", style="dim")
+            self.hpy.say("Vector Database loaded.", "blue", style="dim")
         elif hasattr(self, 'vectors') and self.vectors:
-            self.hpy.say("Detected 'vectors' key..", "lightblack", "dim")
-            self.hpy.say(f"Loading {len(self.vectors)} entries.", "lightblack", "dim")
+            self.hpy.say("Detected 'vectors' key..", "lightblack", style="dim")
+            self.hpy.say(f"Loading {len(self.vectors)} entries.", "lightblack", style="dim")
             self._build_index_from_vectors()
-            self.hpy.say("Vector Index built successfully.", "lightblue", "dim")
-            self.hpy.say("Vector Database loaded.", "blue", "bold")
+            self.hpy.say("Vector Index built successfully.", "lightblue", style="dim")
+            self.hpy.say("Vector Database loaded.", "blue", style="bold")
 
     def _handle_string_input(self, input_data: str):
         if os.path.isdir(input_data):

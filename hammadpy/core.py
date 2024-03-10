@@ -30,7 +30,7 @@ class Core:
         self.dialog = Dialog()
         self.timer = Timer()
 
-    def say(self, message : str, color : str = None, bg: str = None, style : str = None):
+    def say(self, message : str, color : str = None, style : str = None):
         """
         Prints a styled message to the terminal using the Message class.
 
@@ -60,7 +60,7 @@ class Core:
                 - 'reverse'
                 - 'hidden'
         """
-        self.text.say(message, color, bg, style)
+        self.text.say(message, color, style)
 
     def status(self):
         """

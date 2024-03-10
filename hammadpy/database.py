@@ -50,12 +50,12 @@ class Database:
 
         self.ix = None
         if self.content is not None:
-            TextStyles.say("Creating Database Index from content...", "lightblack", "dim")
-            TextStyles.say(f"Detected {len(self.content)} entries.", "lightblack", "dim")
+            TextStyles.say("Creating Database Index from content...", "lightblack", style="dim")
+            TextStyles.say(f"Detected {len(self.content)} entries.", "lightblack", style="dim")
             self._create_index_from_content()
         elif self.index_dir is not None:
-            TextStyles.say("Building Index...", "lightblack", "dim")
-            TextStyles.say(f"Directory: {self.index_dir}", "lightblack", "dim")
+            TextStyles.say("Building Index...", "lightblack", style="dim")
+            TextStyles.say(f"Directory: {self.index_dir}", "lightblack", style="dim")
             self._use_existing_index()
         TextStyles.say("Database loaded.", "green", "bold")
 

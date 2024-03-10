@@ -47,7 +47,7 @@ class Status:
     def __enter__(self):
         self.start_time = time.time()
         while self.is_running:
-            print(f"\r{self.say.text_blue}{self.message} {self.say.text_red}{self.animation[self.index]}", end="", flush=True)
+            print(f"\r{self.say.blue}{self.message} {self.say.red}{self.animation[self.index]}", end="", flush=True)
             time.sleep(0.1)
             self.index = (self.index + 1) % len(self.animation)
 
