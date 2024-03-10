@@ -44,24 +44,27 @@ class Database:
                                        Defaults to a basic schema with 'id' and 'content'.
         """
         self.index_dir = index_dir
+        if self.index_dir == "":
+            self.index_dir = "./database-tmp"
         self.content = content
         self.schema = schema if schema is not None else Schema(id=ID(stored=True), content=TEXT(analyzer=StandardAnalyzer(), stored=True))
 
 
-        self.ix = None
+        self.ix = whoosh_index.create_in(self.index_dir, self.schema) if self.index_dir is not None else None
+        self.TextStyles = TextStyles()
         if self.content is not None:
-            TextStyles.say("Creating Database Index from content...", "lightblack", style="dim")
-            TextStyles.say(f"Detected {len(self.content)} entries.", "lightblack", style="dim")
+            self.TextStyles.say(message="Creating Database Index from content...", color="yellow", style="dim")
+            self.TextStyles.say(message=str(f"Detected {len(self.content)} entries."), color="yellow", style="dim")
             self._create_index_from_content()
         elif self.index_dir is not None:
-            TextStyles.say("Building Index...", "lightblack", style="dim")
-            TextStyles.say(f"Directory: {self.index_dir}", "lightblack", style="dim")
+            self.TextStyles.say(message="Building Index...", color="yellow", style="dim")
+            self.TextStyles.say(message=str(f"Directory: {self.index_dir}"), color="yellow", style="dim")
             self._use_existing_index()
-        TextStyles.say("Database loaded.", "green", "bold")
+        self.TextStyles.say(message="Database loaded.", color="green", style="bold")
 
     def _create_index_from_content(self):
         if self.index_dir is None:
-            self.index_dir = "temp_db"
+            self.index_dir = "./database-tmp"
             if not os.path.exists(self.index_dir):
                 os.mkdir(self.index_dir)
 
@@ -118,3 +121,11 @@ class Database:
         return results_list
     
 #==============================================================================#
+    
+if __name__ == "__main__":
+
+    docs = ["The quick brown fox jumps over the lazy dog.", "The quick brown fox jumps over the lazy dog.", "I am very happy today.", "I am very happy today.", "How are you doing today?", "How are you doing today?"]
+    db = Database(content=docs)
+
+    results = db.search("happy")
+    print(results)
