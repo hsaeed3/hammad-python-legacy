@@ -2,7 +2,7 @@ from sentence_transformers import SentenceTransformer, losses
 import torch
 
 """
-hammadpy/ml/transformers/loss.py
+hammadpy.ml.loss
 Author: Hammad Saeed
 Contact: hammad@supportvectors.com
 Website: python.hammad.fun

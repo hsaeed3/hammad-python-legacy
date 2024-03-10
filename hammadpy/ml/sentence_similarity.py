@@ -3,7 +3,7 @@ import torch
 from typing import List, Tuple
 
 """
-hammadpy/ml/transformers/sentence_similarity.py
+hammadpy.ml.sentence_similarity
 Author: Hammad Saeed
 Contact: hammad@supportvectors.com
 Website: python.hammad.fun

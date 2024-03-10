@@ -1,13 +1,13 @@
 import os
 from openai import OpenAI
 import instructor
-from hammadpy.interactions.messages import TextStyles
-from hammadpy.interactions.status import Status
+from hammadpy.modules.messages import TextStyles
+from hammadpy.modules.status import Status
 from typing import List, Optional
 from pydantic import BaseModel, Field
 
 """
-hammadpy/ml/open/chat_openai.py
+hammadpy.instruct
 Author: Hammad Saeed
 Contact: hammad@supportvectors.com
 Website: python.hammad.fun
@@ -29,7 +29,7 @@ Methods:
 
 #==============================================================================#
 
-class ChatOpenAI:
+class Instruct:
     """
     A class used to generate responses to user queries using OpenAI's Chat Completions.
 

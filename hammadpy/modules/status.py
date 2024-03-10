@@ -12,7 +12,7 @@
 
 #==============================================================================#
 
-from hammadpy.interactions.messages import TextStyles
+from hammadpy.modules.messages import TextStyles
 
 import threading
 import time

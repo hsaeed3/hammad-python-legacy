@@ -2,7 +2,7 @@ from typing import List, Optional, Tuple
 from sentence_transformers import SentenceTransformer
 
 """
-hammadpy/ml/transformers/sentence_embedder.py
+hammadpy.ml.sentence_embedder
 Author: Hammad Saeed
 Contact: hammad@supportvectors.com
 Website: python.hammad.fun

@@ -2,7 +2,7 @@ from typing import List, Dict, Tuple, Optional, Union
 from sentence_transformers import CrossEncoder
 
 """
-hammadpy/ml/transformers/cross_encoder.py
+hammadpy.ml.cross_encoder
 Author: Hammad Saeed
 Contact: hammad@supportvectors.com
 Website: python.hammad.fun

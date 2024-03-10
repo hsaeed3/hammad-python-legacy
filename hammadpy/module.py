@@ -1,19 +1,28 @@
+from hammadpy.modules.messages import TextStyles
+from hammadpy.modules.inputs import Input, Dialog
+from hammadpy.modules.status import Status, Timer
+from hammadpy.modules.verifiers import Verifier
 
-#==============================================================================#
-#== Hammad Saeed ==============================================================#
-#==============================================================================#
-#== www.hammad.fun ============================================================#
-#== hammad@supportvectors.com =================================================#
-#==============================================================================#
+"""
+hammadpy.module
+Author: Hammad Saeed
+Contact: hammad@supportvectors.com
+Website: python.hammad.fun
 
-####### CORE CORE CORE CORE CORE CORE CORE CORE CORE CORE CORE CORE CORE #######
-#== HammadPyCore ==#############################################################
+This module is the entry point for the HammadPy core modules. They can all be
+accessed through the Modules class.
 
-from hammadpy.interactions import TextStyles, Input, Dialog, Status, Timer, Verifier
+Classes:
+-   Modules: The main class for accessing the HammadPy core modules.   
 
-################################################################################
+Methods:
+-   say: Prints a styled message to the terminal using the Message class.
+-   input: CLI input methods.
+-   dialog: CLI dialog methods.
+-   status: Uses the Status class to display a simple animated loading placeholder.
+"""
 
-class HammadPy:
+class Modules:
     def __init__(self):
         self.text = TextStyles()
         self.input = Input()

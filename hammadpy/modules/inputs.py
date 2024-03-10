@@ -3,7 +3,7 @@ from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.shortcuts import input_dialog, yes_no_dialog, button_dialog, radiolist_dialog, checkboxlist_dialog
 
 """
-hammadpy.interactions.inputs
+hammadpy.modules.inputs
 Author: Hammad Saeed
 Contact: hammad@supportvectors.com
 Website: python.hammad.fun
@@ -33,15 +33,16 @@ class Input:
         """
         pass
 
-    def pause(self, message: str = None):
+    @staticmethod
+    def pause(message: str = None):
         if not message:
             message = """
 Press Enter to continue...
 
 """
-        input(message)
 
-    def confirm(self, message: str = None):
+    @staticmethod
+    def confirm(message: str = None):
         """
         Prompts the user for a yes/no confirmation.
 
@@ -54,12 +55,13 @@ Press Enter to continue...
         if not message:
             message = ""
         if message:
-            self.value = yes_no_dialog(title="Confirmation", text=message).run()
-            return self.value
+            value = yes_no_dialog(title="Confirmation", text=message).run()
+            return value
         else:
             print("'message' is required for prompt_confirmation()")
 
-    def ask(self, message: str = None):
+    @staticmethod
+    def ask(message: str = None):
         """
         Prompt for user input in the terminal.
 
@@ -75,12 +77,13 @@ Press Enter to continue...
 
 """
         if message:
-            self.value = prompt(message)
-            return self.value
+            value = prompt(message)
+            return value
         else:
             print("'message' is required for prompt_input()")
 
-    def choice(self, message: str = None, choices: list = None):
+    @staticmethod
+    def choice(message: str = None, choices: list = None):
         """
         Prompts the user to select from a list of choices.
 
@@ -100,8 +103,8 @@ Press Enter to continue...
 
 """
         if message and choices:
-            self.value = input_dialog(title=message, text=message, completer=WordCompleter(choices)).run()
-            return self.value
+            value = input_dialog(title=message, text=message, completer=WordCompleter(choices)).run()
+            return value
         else:
             print("'message' and 'choices' are required for prompt_choice()")
 
@@ -109,7 +112,8 @@ class Dialog:
     def __init__(self):
         pass
 
-    def ask(self, message: str = None, title: str = None):
+    @staticmethod
+    def ask(message: str = None, title: str = None):
         """
         Prompt for user input in the terminal.
 
@@ -119,40 +123,46 @@ class Dialog:
         if not title:
             title = "Input"
         if message and title:
-            self.value = input_dialog(title=title, text=message).run()
-            return self.value
+            value = input_dialog(title=title, text=message).run()
+            return value
         else:
             print("'title' and 'message' are required for prompt_input()")
 
-    def confirm(self, message: str = None):
+    @staticmethod
+    def confirm(message: str = None):
         """
         Prompt for user input in the terminal.
 
         Args:
         -   message (str): Message to be displayed in the terminal.
         """
+        if not message:
+            message = ""
         if message:
-            self.value = yes_no_dialog(title="Confirmation", text=message).run()
-            return self.value
+            value = yes_no_dialog(title="Confirmation", text=message).run()
+            return value
         else:
             print("'message' is required for prompt_confirmation()")
 
-    def asklist(self, message: str = None, choices: str = None):
+    @staticmethod
+    def asklist(choices: list = None, message: str = None):
         """
         Prompt for user input in the terminal.
 
         Args:
+        -   choices (list): A list of options for the user to choose from.
         -   message (str): Message to be displayed in the terminal.
         """
+        if not message:
+            message = ""
         if message and choices:
-            self.message = message
-            self.completer = WordCompleter(choices)
-            self.value = prompt(message, completer=self.completer)
-            return self.value
+            value = input_dialog(title=message, text=message, completer=WordCompleter(choices)).run()
+            return value
         else:
-            print("'message' and 'choices' are required for prompt_list_choice()")
+            print("'message' and 'choices' are required for asklist()")
 
-    def radio(self, message: str = None, choices: list = None):
+    @staticmethod
+    def radio(choices: str = None, message: str = None):
         """
         Display a dialog with choices offered as a radio list.
 
@@ -160,13 +170,16 @@ class Dialog:
         -   message (str): Message to be displayed in the terminal.
         -   choices (list): A list of tuples for the radio options.
         """
+        if not message:
+            message = ""
         if message and choices:
-            self.value = radiolist_dialog(title="RadioList dialog", text=message, values=choices).run()
-            return self.value
+            value = radiolist_dialog(title="RadioList dialog", text=message, values=choices).run()
+            return value
         else:
             print("'message' and 'choices' are required for radiolist()")
 
-    def checkbox(self, message: str = None, choices: list = None):
+    @staticmethod
+    def checkbox(choices: str = None, message: str = None):
         """
         Display a dialog with choices offered as a checkbox list.
 
@@ -174,13 +187,16 @@ class Dialog:
         -   message (str): Message to be displayed in the terminal.
         -   choices (list): A list of tuples for the checkbox options.
         """
+        if not message:
+            message = ""
         if message and choices:
-            self.value = checkboxlist_dialog(title="CheckboxList dialog", text=message, values=choices).run()
-            return self.value
+            value = checkboxlist_dialog(title="CheckboxList dialog", text=message, values=choices).run()
+            return value
         else:
             print("'message' and 'choices' are required for checkboxlist()")
 
-    def button(self, message: str = None, choices: list = None):
+    @staticmethod
+    def button(choices: str = None, message: str = None):
         """
         Display a dialog with choices offered as buttons.
 
@@ -188,10 +204,25 @@ class Dialog:
         -   message (str): Message to be displayed in the terminal.
         -   choices (list): A list of tuples for the button options.
         """
+        if not message:
+            message = ""
         if message and choices:
-            self.value = button_dialog(title="Button dialog", text=message, buttons=choices).run()
-            return self.value
+            value = button_dialog(title="Button dialog", text=message, buttons=choices).run()
+            return value
         else:
             print("'message' and 'choices' are required for button()")
 
 #==============================================================================#
+
+if __name__ == "__main__":
+    list = ["Red", "Green", "Blue"]
+    Input.pause()
+    Input.ask("What is your name?")
+    Input.confirm("Are you sure?")
+    Input.choice("Choose a color:", list)
+    Dialog.ask("What is your name?")
+    Dialog.confirm("Are you sure?")
+    Dialog.asklist("Choose a color:", list)
+    Dialog.radio("Choose a color:", list)
+    Dialog.checkbox("Choose a color:", list)
+    Dialog.button("Choose a color:", list)

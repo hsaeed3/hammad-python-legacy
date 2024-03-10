@@ -1,15 +1,4 @@
-
-#==============================================================================#
-#== Hammad Saeed ==============================================================#
-#==============================================================================#
-#== www.hammad.fun ============================================================#
-#== hammad@supportvectors.com =================================================#
-#==============================================================================#
-
-#== HammadML ==================================================================#
-
-from hammadpy import HammadPy
-
+from hammadpy.modules.messages import TextStyles
 import os
 from whoosh import index as whoosh_index
 from whoosh.analysis import StandardAnalyzer
@@ -17,6 +6,29 @@ from whoosh.fields import Schema, TEXT, ID
 from whoosh.qparser import QueryParser, MultifieldParser
 import pandas as pd
 from typing import Optional, List, Dict, Union, Tuple
+
+"""
+hammadpy.database
+Author: Hammad Saeed
+Contact: hammad@supportvectors.com
+Website: python.hammad.fun
+
+This module contains the Database class which provides a simple interface for creating and searching a Whoosh search index.
+
+Classes:
+    Database: This class provides a simple interface for creating and searching a Whoosh search index.
+
+Methods:
+    add_csv(self, csv_path: str, id_column: str, content_column: str): Adds documents to the index from a CSV file.
+    add(self, documents: List[Dict[str, str]]): Adds documents to the index.
+    search(self, query_str: str, fieldname: str = 'content') -> List[Dict[str, str]]: Searches the index.
+
+Attributes:
+    index_dir: str
+    content: Union[str, Tuple, List]
+    schema: Schema
+    ix: whoosh.index
+"""
 
 #==============================================================================#
 class Database:
@@ -31,7 +43,6 @@ class Database:
             schema (Optional[Schema]): A Whoosh Schema to define the index structure.
                                        Defaults to a basic schema with 'id' and 'content'.
         """
-        self.hpy = HammadPy()
         self.index_dir = index_dir
         self.content = content
         self.schema = schema if schema is not None else Schema(id=ID(stored=True), content=TEXT(analyzer=StandardAnalyzer(), stored=True))
@@ -39,14 +50,14 @@ class Database:
 
         self.ix = None
         if self.content is not None:
-            self.hpy.say("Creating Database Index from content...", "lightblack", "dim")
-            self.hpy.say(f"Detected {len(self.content)} entries.", "lightblack", "dim")
+            TextStyles.say("Creating Database Index from content...", "lightblack", "dim")
+            TextStyles.say(f"Detected {len(self.content)} entries.", "lightblack", "dim")
             self._create_index_from_content()
         elif self.index_dir is not None:
-            self.hpy.say("Building Index...", "lightblack", "dim")
-            self.hpy.say(f"Directory: {self.index_dir}", "lightblack", "dim")
+            TextStyles.say("Building Index...", "lightblack", "dim")
+            TextStyles.say(f"Directory: {self.index_dir}", "lightblack", "dim")
             self._use_existing_index()
-        self.hpy.say("Database loaded.", "green", "bold")
+        TextStyles.say("Database loaded.", "green", "bold")
 
     def _create_index_from_content(self):
         if self.index_dir is None:
