@@ -168,9 +168,8 @@ class VectorDatabase:
             sentence = self.sentences[index]
             document_id = self.document_ids[index]
             vector = self.index.get_item_vector(index)
-            results.append((index, document_id, vector, sentence))
-
-        
+            results.append((index, sentence, document_id, vector))
+        return results    
 
 #==============================================================================#
 
