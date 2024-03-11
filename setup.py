@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="hammadpy",
-    version="2.5.27",
+    version="2.5.29",
     author="Hammad Saeed",
     author_email="hammad@supportvectors.com",
     description="Hammad's Accelarated Micro Modules for Application Development (Hammad's Python Library)",
