@@ -195,7 +195,7 @@ class Instruct:
             completion = completion.answer
             self.status.exit()
             self.text.say(f"Query: {self.query}", color="black", style="dim")
-            self.text.say(message=f"Answer: {self.text.text_lightwhite}{completion}", color="green", style="bold")
+            self.text.say(message=f"Answer: {self.text.lightwhite}{completion}", color="green", style="bold")
             return completion
         
     def code(self, query: str = None, model: str = 'gpt-3.5-turbo'):
@@ -237,7 +237,7 @@ class Instruct:
             completion = completion.code
             self.status.exit()
             self.text.say(f"Query: {self.query}", color="black", style="dim")
-            self.text.say(message=f"Code: {self.text.text_lightwhite}{completion}", color="green", style="bold")
+            self.text.say(message=f"Code: {self.text.lightwhite}{completion}", color="green", style="bold")
             return completion
         
     def command(self, query: str = None, model : str = 'gpt-3.5-turbo-1106'):
@@ -281,7 +281,7 @@ class Instruct:
             completion = completion.command
             self.status.exit()
             self.text.say(f"Query: {self.query}", color="black", style="dim")
-            self.text.say(message=f"Command: {self.text.text_lightwhite}{completion}", color="green", style="bold")
+            self.text.say(message=f"Command: {self.text.lightwhite}{completion}", color="green", style="bold")
             return completion
 
     def vocabulary(self, query: str = None, model : str = 'gpt-3.5-turbo-1106', ):
@@ -324,7 +324,7 @@ class Instruct:
             completion = completion.vocab
             self.status.exit()
             self.text.say(f"Query: {self.query}", color="black", style="dim")
-            self.text.say(message=f"Enriched Query: {self.text.text_lightwhite}{completion}", color="green", style="bold")
+            self.text.say(message=f"Enriched Query: {self.text.lightwhite}{completion}", color="green", style="bold")
             return completion
         
     def plan(self, query: str = None, model : str = 'gpt-3.5-turbo-1106'):
