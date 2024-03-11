@@ -7,7 +7,7 @@ Author: Hammad Saeed
 Contact: hammad@supportvectors.com
 Website: python.hammad.fun
 
-This module contains the XEncoder class which uses sentence transformers
+This module contains the CrossEncode class which uses sentence transformers
 to score sentence pairs using a CrossEncoder model.
 
 Classes:
@@ -19,7 +19,7 @@ Methods:
 
 #==============================================================================#
 
-class XEncoder:
+class CrossEncode:
     def __init__(self, model_name: Optional[str] = None, max_length: Optional[int] = None):
         """
         Initializes the XEncoder with a specified model.
@@ -56,6 +56,8 @@ class XEncoder:
         -------
             List[Tuple[int, float]]
         """
+
+        
         min_length = min(len(x), len(y))
         x = x[:min_length]
         y = y[:min_length]
@@ -63,6 +65,7 @@ class XEncoder:
         scores = self.model.predict(pairs)
         index_with_score = sorted(enumerate(scores), key=lambda x: x[1], reverse=True)
 
-        return index_with_score
+        ranked_pairs = [(x[i], y[i], score) for i, score in index_with_score]
+        return ranked_pairs
     
 #==============================================================================#

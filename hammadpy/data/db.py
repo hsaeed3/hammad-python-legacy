@@ -53,12 +53,8 @@ class Database:
         self.ix = whoosh_index.create_in(self.index_dir, self.schema) if self.index_dir is not None else None
         self.TextStyles = TextStyles()
         if self.content is not None:
-            self.TextStyles.say(message="Creating Database Index from content...", color="yellow", style="dim")
-            self.TextStyles.say(message=str(f"Detected {len(self.content)} entries."), color="yellow", style="dim")
             self._create_index_from_content()
         elif self.index_dir is not None:
-            self.TextStyles.say(message="Building Index...", color="yellow", style="dim")
-            self.TextStyles.say(message=str(f"Directory: {self.index_dir}"), color="yellow", style="dim")
             self._use_existing_index()
         self.TextStyles.say(message="Database loaded.", color="green", style="bold")
 
