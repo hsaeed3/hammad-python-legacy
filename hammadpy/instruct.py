@@ -97,6 +97,7 @@ class Instruct:
             pydantic = pydantic
         self.model = model
 
+        self.llm = instructor.patch(self.llm)
         if model == "3":
             self.model = "gpt-3.5-turbo-1106"
         if model == "4":
