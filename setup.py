@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="hammadpy",
-    version="2.5.356",
+    version="2.5.36",
     author="Hammad Saeed",
     author_email="hammad@supportvectors.com",
     description="Hammad's Accelarated Micro Modules for Application Development (Hammad's Python Library)",
@@ -89,6 +89,7 @@ Documentation available at: https://github.com/hsaeed3/hammad-python
 "tqdm",
 "transformers",
 "typer",
+'tinydb',
 "typing_extensions",
 "tzdata",
 "urllib3",
