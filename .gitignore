@@ -7,9 +7,13 @@ hammadpy/__pycache__/
 *$py.class
 hammadpy/core/__pycache__/
 hammadpy/data/__pycache__/
+hammadpy/experimental/__pycache__/
+hammadpy/modules/__pycache__/
 hammadpy/interactions/__pycache__/
 hammadpy/ml/__pycache__/
 hammadpy/ml/hf/__pycache__/
 hammadpy/ml/open/__pycache__/
 hammadpy/ml/transformers/__pycache__/
 hammadpy/web/__pycache__/
+
+.DS_Store
