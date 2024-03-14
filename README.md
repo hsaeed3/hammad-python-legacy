@@ -1,5 +1,5 @@
 
-[![hammadpy 2.1.0](https://img.shields.io/badge/dependency-hammadpy-blue?logo=pypi&logoColor=white)](https://pypi.org/project/hammadpy)
+[![hammadpy 2.5.36](https://img.shields.io/badge/dependency-hammadpy-blue?logo=pypi&logoColor=white)](https://pypi.org/project/hammadpy)
 
 [python.hammad.fun](https://python.hammad.fun)
 
