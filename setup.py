@@ -45,6 +45,7 @@ Documentation available at: https://github.com/hsaeed3/hammad-python
 "httpcore",
 "httpx",
 "huggingface-hub",
+"hpyrust_text",
 "idna",
 "instructor",
 "itsdangerous",
