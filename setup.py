@@ -1,4 +1,5 @@
 import setuptools
+from setuptools_rust import Binding, RustExtension
 
 setuptools.setup(
     name="hammadpy",
@@ -7,9 +8,8 @@ setuptools.setup(
     author_email="hammad@supportvectors.com",
     description="Hammad's Accelarated Micro Modules for Application Development (Hammad's Python Library)",
     long_description="""
-Hammad's Accelarated Micro Modules for Application Development (Hammad's Python Library)
-
-Documentation available at: https://github.com/hsaeed3/hammad-python
+    Hammad's Accelarated Micro Modules for Application Development (Hammad's Python Library)
+    Documentation available at: https://github.com/hsaeed3/hammad-python
     """,
     packages=setuptools.find_packages(),
     classifiers=[
@@ -19,7 +19,7 @@ Documentation available at: https://github.com/hsaeed3/hammad-python
     ],
     python_requires='>3.9',
     package_data={'hammadpy': ['wheels/*.whl']},
-    install_requires=[
+     install_requires=[
 "art",
 "aiohttp",
 "aiosignal",
@@ -46,7 +46,6 @@ Documentation available at: https://github.com/hsaeed3/hammad-python
 "httpcore",
 "httpx",
 "huggingface-hub",
-"hpyrust-text==0.1.1",
 "idna",
 "instructor",
 "itsdangerous",
@@ -100,4 +99,14 @@ Documentation available at: https://github.com/hsaeed3/hammad-python
 "Whoosh",
 "yarl"
     ]
+    rust_extensions=[RustExtension("hammadpy.hpyrust_text", binding=Binding.PyO3)],
+    build_system={
+        "requires": [
+            "setuptools>=62",
+            "wheel",
+            "setuptools-rust>=1.5.2"
+        ],
+        "build-backend": "setuptools.build_meta"
+    },
+    zip_safe=False,
 )
