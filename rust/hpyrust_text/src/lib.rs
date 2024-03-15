@@ -2,6 +2,7 @@ use colored::*;
 use pyo3::prelude::*;
 
 #[pyfunction]
+#[pyo3(signature = (message, color, bg = "None", bold = false, italic = false, underline = false))]
 fn say(message: &str, color: &str, bg: Option<&str>, bold: bool, italic: bool, underline: bool) -> PyResult<String> {
     let mut colored_message = message.color(parse_color(color));
 
@@ -25,6 +26,7 @@ fn say(message: &str, color: &str, bg: Option<&str>, bold: bool, italic: bool, u
 }
 
 #[pyfunction]
+#[pyo3(signature = (items, color, bg = "None", bold = false, italic = false, underline = false))]
 fn list(items: Vec<String>, color: &str, bg: Option<&str>, bold: bool, italic: bool, underline: bool) -> PyResult<Vec<String>> {
     let colored_items = items
         .into_iter()
