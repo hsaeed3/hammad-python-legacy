@@ -1,5 +1,4 @@
 import hpyrust_text
-
 class Text:
     def say(self, message, color="white", bg=None, bold=False, italic=False, underline=False):
         styled_message = hpyrust_text.say(message, color, bg, bold, italic, underline)

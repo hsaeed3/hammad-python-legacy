@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="hammadpy",
-    version="2.6.1",
+    version="2.6.2",
     author="Hammad Saeed",
     author_email="hammad@supportvectors.com",
     description="Hammad's Accelarated Micro Modules for Application Development (Hammad's Python Library)",
@@ -45,7 +45,7 @@ setuptools.setup(
         "httpcore",
         "httpx",
         "huggingface-hub",
-        "hpyrust_text",
+        "hpyrust_text==0.1.4",
         "idna",
         "instructor",
         "itsdangerous",
