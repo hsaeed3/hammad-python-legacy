@@ -1,0 +1,21 @@
+[package]
+name = "hpyrust_text"
+version = "0.1.1"  # Specify the desired version
+authors = ["Hammad Saeed <hammad@supportvectors.com>"]
+edition = "2021"  
+description = "New text library/dependency built on rust, for hammadpy."
+license = "MIT" 
+
+[dependencies]
+colored = "2.0.0"
+
+[dependencies.pyo3]
+version = "0.16.5"
+features = ["extension-module"]
+
+[lib]
+name = "hpyrust_text"
+crate-type = ["cdylib"]
+
+[package.metadata.maturin]
+python-source = "python"

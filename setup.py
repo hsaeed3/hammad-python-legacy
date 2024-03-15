@@ -18,6 +18,7 @@ Documentation available at: https://github.com/hsaeed3/hammad-python
         "Operating System :: OS Independent",
     ],
     python_requires='>3.9',
+    package_data={'hammadpy': ['wheels/*.whl']},
     install_requires=[
 "art",
 "aiohttp",
@@ -45,7 +46,7 @@ Documentation available at: https://github.com/hsaeed3/hammad-python
 "httpcore",
 "httpx",
 "huggingface-hub",
-"hpyrust_text",
+"hpyrust-text==0.1.1",
 "idna",
 "instructor",
 "itsdangerous",
