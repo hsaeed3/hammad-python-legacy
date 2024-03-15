@@ -1,6 +1,6 @@
 [package]
 name = "hpyrust_text"
-version = "0.1.4"  # Update the version to match setup.py
+version = "0.1.5"  # Update the version to match setup.py
 authors = ["Hammad Saeed <hammad@supportvectors.com>"]
 edition = "2021"
 description = "New text library/dependency built on rust, for hammadpy."

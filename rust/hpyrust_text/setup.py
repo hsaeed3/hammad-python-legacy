@@ -3,7 +3,7 @@ from setuptools_rust import Binding, RustExtension
 
 setup(
     name="hpyrust_text",
-    version="0.1.4",
+    version="0.1.5",
     rust_extensions=[RustExtension("hpyrust_text", binding=Binding.PyO3, path="Cargo.toml")],
     packages=["hpyrust_text"],
     classifiers=[
